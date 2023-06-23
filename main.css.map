@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":";;;AAAA;EACE,UAAU;EACV,wBAAwB;EACxB,kBAAkB;AACpB","sources":["webpack://to-do/./src/style/main.css"],"sourcesContent":["h1 {\n  color: red;\n  background-color: orange;\n  text-align: center;\n}\n"],"names":[],"sourceRoot":""}
