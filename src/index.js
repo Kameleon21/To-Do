@@ -1,4 +1,5 @@
 import "./style/main.css";
+import "./style/modal-task.css";
 
 // class to generate the todo objects
 

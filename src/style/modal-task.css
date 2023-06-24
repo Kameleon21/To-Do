@@ -1,0 +1,39 @@
+:root {
+  --main-clr: #0b132b;
+  --second-clr: #1c2541;
+  --third-clr: #3a506b;
+  --fourth-clr: #5bc0be;
+  --fifth-clr: #6fffe9;
+}
+
+/* modal */
+.modal {
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  width: 400px;
+  background-color: var(--second-clr);
+  border-radius: 1em;
+}
+
+.modal form {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+/* tags */
+.tags {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tag-template {
+  padding: 0.5em;
+  border-radius: 1px;
+  width: 200px;
+}
