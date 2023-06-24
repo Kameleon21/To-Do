@@ -7,9 +7,26 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <h1>Create a new Task</h1>
     <div class="contain">
-      <!-- <div class="modal">
+      <div class="sidebar">
+        <div class="sideBar-contain">
+          <button>Add Task</button>
+          <div class="prio">
+            <h1>Priority List</h1>
+            <button class="Complete">Completed</button>
+            <button class="Doing">Doing</button>
+            <button class="ToDo">To Do</button>
+          </div>
+        </div>
+      </div>
+      <div class="mainTask">
+        <h2>Tasks</h2>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- <div class="modal">
         <form method="post" id="newTask">
           <label for="title">Title:</label>
           <input type="text" name="title" id="title" />
@@ -31,6 +48,3 @@
           <button type="button" id="button">Add task</button>
         </form>
       </div> -->
-    </div>
-  </body>
-</html>
