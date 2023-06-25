@@ -8,7 +8,6 @@
 
 /* modal */
 .modal {
-  visibility: hidden;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -19,11 +18,26 @@
   border-radius: 1em;
 }
 
+/* hide and display modal */
+.modalHide {
+  visibility: hidden;
+}
+
 .modal form {
   padding: 2em;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+}
+
+.btnHolder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Clear,
+#newTaskBtn {
+  flex-grow: 1;
 }
 
 /* tags */
@@ -36,4 +50,24 @@
   padding: 0.5em;
   border-radius: 1px;
   width: 200px;
+  letter-spacing: 2px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--second-clr);
+  border-radius: 10px;
+}
+
+.task p {
+  width: 100px;
+  /* height: 100px; */
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }

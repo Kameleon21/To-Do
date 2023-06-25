@@ -40,4 +40,4 @@ export default class Todo {
   }
 }
 
-const task1 = new Todo("Clean", "Clean the whole house and hoover", 8, 1);
+

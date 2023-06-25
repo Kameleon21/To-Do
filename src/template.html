@@ -26,7 +26,8 @@
           <button class="tag-template">Due Date</button>
           <button class="tag-template">Priority</button>
         </div>
-        <div class="modal">
+        <div id="content"></div>
+        <div class="modal modalHide">
           <form method="post" id="newTask">
             <label for="title">Title:</label>
             <input type="text" name="title" id="title" />
@@ -45,7 +46,10 @@
               <option value="Doing">Doing</option>
               <option value="To-Do">To-Do</option>
             </select>
-            <button type="button" id="button">Add task</button>
+            <div class="btnHolder">
+              <button type="button" id="newTaskBtn">Add task</button>
+              <button type="button" class="Clear">Clear</button>
+            </div>
           </form>
         </div>
       </div>
