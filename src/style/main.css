@@ -27,11 +27,21 @@
   grid-area: 1 / 1 / 4 / 2;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
+
+.projectModal {
+  position: absolute;
+  top: 50%;
+}
+
+.projects h2 {
+  margin-bottom: 2em;
+}
+
 
 /* List of priority styling */
 .prio {
+  flex-grow: 0;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
@@ -51,11 +61,10 @@
 }
 
 /* Buttons styling */
-button {
+.btn {
   background-color: var(--third-clr);
   border-color: var(--third-clr);
   color: #fff;
   padding: 1em;
   border-radius: 8px;
 }
-

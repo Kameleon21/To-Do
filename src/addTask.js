@@ -3,6 +3,7 @@ import { clearModal, checkModalClass } from "./modal";
 
 const button = document.getElementById("newTaskBtn");
 const content = document.getElementById("content");
+const taskModal = document.querySelector(".taskModal");
 // an array to store the tasks
 const allTasks = [];
 
@@ -35,7 +36,6 @@ function printOutArray() {
     // assign class
     div.classList.add("task");
     content.appendChild(div);
-    checkModalClass();
   });
 }
 
@@ -46,6 +46,7 @@ button.addEventListener("click", () => {
   let userDueDate = document.querySelector("#dueDate").value;
   let userPriority = document.getElementById("priority").value;
   addNewTask(userTitle, userDescription, userDueDate, userPriority);
-  clearModal();
   printOutArray();
+  clearModal();
+  checkModalClass();
 });

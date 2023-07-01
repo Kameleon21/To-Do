@@ -6,15 +6,15 @@
   --fifth-clr: #6fffe9;
 }
 
-/* modal */
-.modal {
+/* task modal */
+.taskModal {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
   width: 400px;
-  background-color: var(--second-clr);
+  background-color: var(--third-clr);
   border-radius: 1em;
 }
 
@@ -23,7 +23,7 @@
   visibility: hidden;
 }
 
-.modal form {
+.taskModal form {
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -38,6 +38,14 @@
 .Clear,
 #newTaskBtn {
   flex-grow: 1;
+}
+
+.hideModal {
+  position: absolute;
+  left: 90%;
+  bottom: 90%;
+  padding: 5px;
+  font-size: large;
 }
 
 /* tags */
@@ -63,7 +71,6 @@
 
 .task p {
   width: 100px;
-  /* height: 100px; */
 }
 
 #content {

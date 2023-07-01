@@ -11,24 +11,42 @@
     <div class="contain">
       <div class="sideBar">
         <div class="prio">
-          <button class="addTask">Add Task</button>
+          <button class="btn addTask">Add Task</button>
           <h1>Priority List</h1>
-          <button class="Complete">Completed</button>
-          <button class="Doing">Doing</button>
-          <button class="ToDo">To Do</button>
+          <button class="btn Complete">Completed</button>
+          <button class="btn Doing">Doing</button>
+          <button class="btn ToDo">To Do</button>
+          <div class="projects">
+            <h2>Projects</h2>
+            <button type="button" class="btn addProjects">
+              Add New Projects
+            </button>
+          </div>
+          <div class="newProjects"></div>
         </div>
+        <!-- <div class="projectModal hideProject">
+          <form action="post">
+            <label for="name"> Name Of New Project:</label>
+            <input type="text" name="name" />
+            <div class="projectBtn">
+              <button type="button" class="btn add">Add</button>
+              <button type="button" class="btn exit">Exit</button>
+            </div>
+          </form>
+        </div> -->
       </div>
       <div class="mainTask">
         <h1>Tasks</h1>
         <div class="tags">
-          <button class="tag-template">Title</button>
-          <button class="tag-template">Description</button>
-          <button class="tag-template">Due Date</button>
-          <button class="tag-template">Priority</button>
+          <button class="btn tag-template">Title</button>
+          <button class="btn tag-template">Description</button>
+          <button class="btn tag-template">Due Date</button>
+          <button class="btn tag-template">Priority</button>
         </div>
         <div id="content"></div>
-        <div class="modal modalHide">
+        <div class="taskModal modalHide">
           <form method="post" id="newTask">
+            <button type="button" class="hideModal">X</button>
             <label for="title">Title:</label>
             <input type="text" name="title" id="title" />
             <label for="description">Description:</label>

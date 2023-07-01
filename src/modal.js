@@ -1,6 +1,9 @@
 const addTaskBtn = document.querySelector(".addTask");
-const modal = document.querySelector(".modal");
+const modal = document.querySelector(".taskModal");
 const clear = document.querySelector(".Clear");
+const hideModal = document.querySelector(".hideModal");
+const projectModal = document.querySelector(".projectModal");
+
 // clear the modal values and hide it form screen when the add task gets hit
 export function clearModal() {
   let userTitle = document.getElementById("title");
