@@ -4,7 +4,7 @@
 }
 
 :root {
-  --main-clr: #0b132b;
+  --main-clr: #0b32b;
   --second-clr: #1c2541;
   --third-clr: #3a506b;
   --fourth-clr: #5bc0be;
@@ -38,7 +38,6 @@
   margin-bottom: 2em;
 }
 
-
 /* List of priority styling */
 .prio {
   flex-grow: 0;
@@ -67,4 +66,14 @@
   color: #fff;
   padding: 1em;
   border-radius: 8px;
+}
+
+/* delete btn styling */
+.taskBtnDel {
+  background-color: red;
+  color: white;
+  border-color: red;
+  border-radius: 5px;
+  padding: 3px;
+  font-weight: bold;
 }

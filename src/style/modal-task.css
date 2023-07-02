@@ -55,7 +55,7 @@
 }
 
 .tag-template {
-  padding: 0.5em;
+  padding: 10px 5px;
   border-radius: 1px;
   width: 200px;
   letter-spacing: 2px;
@@ -63,14 +63,14 @@
 
 .task {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
   background-color: var(--second-clr);
   border-radius: 10px;
 }
 
-.task p {
-  width: 100px;
+.infoHolder {
+  display: flex;
 }
 
 #content {
