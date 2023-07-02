@@ -1,5 +1,6 @@
 import "./style/main.css";
 import "./style/modal-task.css";
+import { format } from "date-fns";
 
 // class to generate the todo objects
 
@@ -7,7 +8,7 @@ export default class Todo {
   constructor(title, description, dueDate, priority) {
     this.title = title;
     this.description = description;
-    this.dueDate = new Date(dueDate);
+    this.dueDate = format(new Date(dueDate), "dd/MM/yyyy");
     this.priority = priority;
   }
 
@@ -39,5 +40,3 @@ export default class Todo {
     this.priority = priority;
   }
 }
-
-

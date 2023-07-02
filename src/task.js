@@ -3,7 +3,6 @@ import { clearModal, checkModalClass } from "./modal";
 
 const button = document.getElementById("newTaskBtn");
 const content = document.getElementById("content");
-const taskModal = document.querySelector(".taskModal");
 // an array to store the tasks
 const allTasks = [];
 

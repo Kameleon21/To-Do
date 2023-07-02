@@ -64,13 +64,16 @@
 .task {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-color: var(--second-clr);
   border-radius: 10px;
 }
 
 .infoHolder {
   display: flex;
+  justify-content: center;
+  gap: 9rem;
+  flex-grow: 1;
 }
 
 #content {
