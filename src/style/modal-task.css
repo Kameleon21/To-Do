@@ -36,7 +36,8 @@
 }
 
 .Clear,
-#newTaskBtn {
+#newTaskBtn,
+#editBtn {
   flex-grow: 1;
 }
 
@@ -48,19 +49,6 @@
   font-size: large;
 }
 
-/* tags */
-.tags {
-  display: flex;
-  justify-content: space-around;
-}
-
-.tag-template {
-  padding: 10px 5px;
-  border-radius: 1px;
-  width: 200px;
-  letter-spacing: 2px;
-}
-
 .task {
   display: flex;
   align-items: center;
@@ -69,15 +57,18 @@
   border-radius: 10px;
 }
 
-.infoHolder {
-  display: flex;
-  justify-content: center;
-  gap: 9rem;
-  flex-grow: 1;
+.task p {
+  width: 50px;
+  text-align: center;
 }
 
 #content {
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
+
+.hiddenEditBtn {
+  position: absolute;
+  visibility: hidden;
 }

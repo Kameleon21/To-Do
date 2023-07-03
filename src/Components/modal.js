@@ -1,8 +1,9 @@
+import { domTaskForm } from "./DomElements";
+
 const addTaskBtn = document.querySelector(".addTask");
-const modal = document.querySelector(".taskModal");
+const modalDiv = document.querySelector(".taskModal");
+const modal = document.getElementById("newTask");
 const clear = document.querySelector(".Clear");
-const hideModal = document.querySelector(".hideModal");
-const projectModal = document.querySelector(".projectModal");
 
 // clear the modal values and hide it form screen when the add task gets hit
 export function clearModal() {
@@ -18,15 +19,18 @@ export function clearModal() {
 
 // check if modal is visible or not
 export function checkModalClass() {
-  if (modal.classList.contains("modalHide")) {
-    modal.classList.remove("modalHide");
+  if (modalDiv.classList.contains("modalHide")) {
+    modalDiv.classList.remove("modalHide");
   } else {
-    modal.classList.add("modalHide");
+    modalDiv.classList.add("modalHide");
   }
 }
 
 // clear the modal when user still on filling out details
-clear.addEventListener("click", clearModal);
+// clear.addEventListener("click", clearModal);
 
 // load up modal when add task gets button gets pressed
-addTaskBtn.addEventListener("click", checkModalClass);
+addTaskBtn.addEventListener("click", () => {
+  checkModalClass();
+  // domTaskForm(modalDiv);
+});

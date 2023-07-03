@@ -69,12 +69,27 @@
 }
 
 /* delete btn styling */
-.taskBtnDel {
+.btnDel {
   background-color: red;
   color: white;
   border-color: red;
   border-radius: 5px;
   padding: 3px;
-  font-weight: bold;
+  font-weight: 550;
 }
 
+/* Edit btn */
+
+.btnEdit {
+  background-color: rgb(243, 243, 88);
+  color: black;
+  border-color: rgb(243, 243, 88);
+  border-radius: 5px;
+  padding: 3px;
+  font-weight: 550;
+}
+
+.btnHolder {
+  display: flex;
+  gap: 1rem;
+}
