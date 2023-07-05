@@ -1,6 +1,6 @@
 import Todo from "../index";
 import { clearModal, checkModalClass } from "./modal";
-import { domEditTaskForm, dom } from "./DomElements";
+import { format, parse } from "date-fns";
 
 const button = document.getElementById("newTaskBtn");
 const content = document.getElementById("content");
@@ -9,7 +9,6 @@ const editBtn = document.getElementById("editBtn");
 
 // an array to store the tasks
 const allTasks = [];
-
 // function to assign values and create instance
 const addNewTask = (title, description, dueDate, priority) => {
   const task = new Todo(title, description, dueDate, priority);
@@ -38,9 +37,10 @@ function createDomElements(element) {
   parentDiv.appendChild(btnHolder);
   // assigning dataset to delete button
   btnDel.dataset.ID = allTasks.indexOf(element);
+  btnEdit.dataset.ID = allTasks.indexOf(element);
   // assigning event listener to delete button
   btnDel.addEventListener("click", removeTask);
-  btnEdit.addEventListener("click", editTask);
+  btnEdit.addEventListener("click", viewTask);
   // assign class
   parentDiv.classList.add("task");
   btnHolder.classList.add("btnHolder");
@@ -64,37 +64,35 @@ function removeTask(element) {
   printOutArray();
 }
 
-function editTask() {
+function viewTask(event) {
   // show the modal with the info of the current element
   checkModalClass();
   button.classList.add("hiddenEditBtn");
   editBtn.classList.remove("hiddenEditBtn");
   let userTitle = document.getElementById("title");
   let userDescription = document.getElementById("description");
-  let userDueDate = document.querySelector("#dueDate");
+  let userDueDate = document.getElementById("dueDate");
   let userPriority = document.getElementById("priority");
-
-  userTitle.value = allTasks[0].getTitle();
-  userDescription.value = allTasks[0].getDescription();
-  userDueDate.value = allTasks[0].getDueDate();
-  userPriority.value = allTasks[0].getPriority();
-  editBtn.addEventListener("click", editEachTask);
+  // format the stored date value
+  const storedDate = allTasks[event.target.dataset.ID].getDueDate();
+  const parsedDate = parse(storedDate, "dd/MM/yyyy", new Date());
+  const formattedDueDate = format(parsedDate, "yyyy-MM-dd");
+  userTitle.value = allTasks[event.target.dataset.ID].getTitle();
+  userDescription.value = allTasks[event.target.dataset.ID].getDescription();
+  userDueDate.value = formattedDueDate;
+  userPriority.value = allTasks[event.target.dataset.ID].getPriority();
+  editBtn.addEventListener("click", editTask);
   printOutArray();
 }
 
 // update the values of the given object
-function editEachTask() {
-  let userTitle = document.getElementById("title").value;
-  let userDescription = document.getElementById("description").value;
-  let userDueDate = document.querySelector("#dueDate").value;
-  let userPriority = document.getElementById("priority").value;
-  allTasks[0].setTitle(userTitle);
-  allTasks[0].setDescription(userDescription);
-  allTasks[0].setDueDate(userDueDate);
-  allTasks[0].setPriority(userPriority);
-  checkModalClass();
-  clearModal();
-  printOutArray();
+function editTask(event) {
+  const updatedTask = new Todo(
+    document.getElementById("title").value,
+    document.getElementById("description").value,
+    document.querySelector("#dueDate").value,
+    document.getElementById("priority").value
+  );
   editBtn.classList.add("hiddenEditBtn");
   button.classList.remove("hiddenEditBtn");
 }
