@@ -34,7 +34,7 @@ export default class Todo {
     this.description = description;
   }
   setDueDate(dueDate) {
-    this.dueDate = dueDate;
+    this.dueDate = format(new Date(dueDate), "dd/MM/yyyy");
   }
   setPriority(priority) {
     this.priority = priority;

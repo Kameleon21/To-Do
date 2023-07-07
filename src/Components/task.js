@@ -81,23 +81,28 @@ function viewTask(event) {
   userDescription.value = allTasks[event.target.dataset.ID].getDescription();
   userDueDate.value = formattedDueDate;
   userPriority.value = allTasks[event.target.dataset.ID].getPriority();
-  editBtn.addEventListener("click", editTask);
-  printOutArray();
-}
-
-// update the values of the given object
-function editTask(event) {
-  const updatedTask = new Todo(
-    document.getElementById("title").value,
-    document.getElementById("description").value,
-    document.querySelector("#dueDate").value,
-    document.getElementById("priority").value
+  editBtn.addEventListener(
+    "click",
+    function () {
+      const idNumber = event.target.dataset.ID;
+      console.log(idNumber);
+      let userTitle = document.getElementById("title").value;
+      let userDescription = document.getElementById("description").value;
+      let userDueDate = document.getElementById("dueDate").value;
+      let userPriority = document.getElementById("priority").value;
+      allTasks[idNumber].setTitle(userTitle);
+      allTasks[idNumber].setDescription(userDescription);
+      allTasks[idNumber].setDueDate(userDueDate);
+      allTasks[idNumber].setPriority(userPriority);
+      editBtn.classList.add("hiddenEditBtn");
+      button.classList.remove("hiddenEditBtn");
+      checkModalClass();
+      clearModal();
+      printOutArray();
+    },
+    { once: true }
   );
-  editBtn.classList.add("hiddenEditBtn");
-  button.classList.remove("hiddenEditBtn");
 }
-
-// get the value of modal
 
 // add eventListener to create a task on button click
 button.addEventListener("click", () => {
