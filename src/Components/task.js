@@ -1,10 +1,10 @@
 import Todo from "../index";
 import { clearModal, checkModalClass } from "./modal";
+import { createTaskDom } from "./domElements";
 import { format, parse } from "date-fns";
 
 const button = document.getElementById("newTaskBtn");
 const content = document.getElementById("content");
-const modal = document.getElementById("newTask");
 const editBtn = document.getElementById("editBtn");
 
 // an array to store the tasks
@@ -15,46 +15,11 @@ const addNewTask = (title, description, dueDate, priority) => {
   allTasks.push(task);
 };
 
-// create DOM elements
-function createDomElements(element) {
-  // create the elements
-  const parentDiv = document.createElement("div");
-  const btnHolder = document.createElement("div");
-  const title = document.createElement("p");
-  const dueDate = document.createElement("p");
-  const btnDel = document.createElement("button");
-  const btnEdit = document.createElement("button");
-  // assign values of each task to the element
-  title.textContent = element.getTitle();
-  dueDate.textContent = element.getDueDate();
-  btnDel.textContent = "Delete";
-  btnEdit.textContent = "Edit";
-  // assign new tags to main div
-  btnHolder.appendChild(btnDel);
-  btnHolder.appendChild(btnEdit);
-  parentDiv.appendChild(title);
-  parentDiv.appendChild(dueDate);
-  parentDiv.appendChild(btnHolder);
-  // assigning dataset to delete button
-  btnDel.dataset.ID = allTasks.indexOf(element);
-  btnEdit.dataset.ID = allTasks.indexOf(element);
-  // assigning event listener to delete button
-  btnDel.addEventListener("click", removeTask);
-  btnEdit.addEventListener("click", viewTask);
-  // assign class
-  parentDiv.classList.add("task");
-  btnHolder.classList.add("btnHolder");
-  btnDel.classList.add("btnDel");
-  btnEdit.classList.add("btnEdit");
-  // add each task div to task holder
-  content.appendChild(parentDiv);
-}
-
 // loop through the given array and print out the tasks
 function printOutArray() {
   content.textContent = "";
   allTasks.forEach((element) => {
-    createDomElements(element);
+    createTaskDom(element, allTasks, removeTask, viewTask);
   });
 }
 
@@ -85,7 +50,6 @@ function viewTask(event) {
     "click",
     function () {
       const idNumber = event.target.dataset.ID;
-      console.log(idNumber);
       let userTitle = document.getElementById("title").value;
       let userDescription = document.getElementById("description").value;
       let userDueDate = document.getElementById("dueDate").value;

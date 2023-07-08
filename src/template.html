@@ -13,9 +13,10 @@
         <div class="prio">
           <button class="btn addTask">Add Task</button>
           <h1>Priority List</h1>
-          <button class="btn Complete">Completed</button>
-          <button class="btn Doing">Doing</button>
-          <button class="btn ToDo">To Do</button>
+          <button class="btn today">Today</button>
+          <button class="btn inbox">Inbox</button>
+          <button class="btn completed">Completed</button>
+          <button class="btn allTsk">All Tasks</button>
           <div class="projects">
             <h2>Projects</h2>
             <button type="button" class="btn addProjects">
@@ -24,16 +25,6 @@
           </div>
           <div class="newProjects"></div>
         </div>
-        <!-- <div class="projectModal hideProject">
-          <form action="post">
-            <label for="name"> Name Of New Project:</label>
-            <input type="text" name="name" />
-            <div class="projectBtn">
-              <button type="button" class="btn add">Add</button>
-              <button type="button" class="btn exit">Exit</button>
-            </div>
-          </form>
-        </div> -->
       </div>
       <div class="mainTask">
         <h1 class="mainHeading">Tasks</h1>
@@ -64,6 +55,16 @@
                 Edit
               </button>
               <button type="button" class="Clear">Clear</button>
+            </div>
+          </form>
+        </div>
+        <div class="projectModal hideProject">
+          <form action="post">
+            <label for="name"> Name Of New Project:</label>
+            <input type="text" name="name" id="projectName" />
+            <div class="projectBtn">
+              <button type="button" class="btn add">Add</button>
+              <button type="button" class="btn exit">Exit</button>
             </div>
           </form>
         </div>
