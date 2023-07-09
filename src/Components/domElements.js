@@ -32,4 +32,11 @@ export function createTaskDom(element, allTasks, removeTask, viewTask) {
   content.appendChild(parentDiv);
 }
 
-
+export function createNewProjectDom(projectName, projectsDiv, project) {
+  const projectHolder = document.createElement("button");
+  projectHolder.textContent = projectName;
+  // projectHolder.dataset.ID = project.indexOf(this);
+  // projectHolder.addEventListener("click", printOutArray);
+  projectHolder.classList.add("btn");
+  projectsDiv.appendChild(projectHolder);
+}

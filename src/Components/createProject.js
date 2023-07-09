@@ -1,8 +1,10 @@
 import { checkModalClass, checkSideModal, clearSideModal } from "./modal";
+import { createNewProjectDom } from "./domElements";
 
 const newProjectBtn = document.querySelector(".addProjects");
 const addProjectBtn = document.querySelector(".add");
 const exitProjectBtn = document.querySelector(".exit");
+const projectsDiv = document.querySelector(".newProjects");
 
 // Define a project Class
 class Project {
@@ -16,7 +18,7 @@ const projects = [];
 
 // function to create a new project
 function createProject() {
-  const projectName = prompt("Enter the project name:");
+  const projectName = document.getElementById("projectName").value;
   const projectSearch = projects.find(
     (p) => p.name.toLowerCase() === projectName.toLocaleLowerCase()
   );
@@ -25,14 +27,13 @@ function createProject() {
   } else {
     const project = new Project(projectName);
     projects.push(project);
-    addTaskToProject();
     console.log(project);
+    createNewProjectDom(projectName, projectsDiv, projects);
   }
 }
 
 // Function to add task to a project
-function addTaskToProject() {
-  const projectName = prompt("Enter the project name to add the task:");
+function addTaskToProject(projectName) {
   const project = projects.find(
     (p) => p.name.toLocaleLowerCase() === projectName.toLocaleLowerCase()
   );
@@ -56,4 +57,5 @@ exitProjectBtn.addEventListener("click", () => {
 addProjectBtn.addEventListener("click", () => {
   createProject();
   checkSideModal();
+  clearSideModal();
 });
