@@ -5,10 +5,12 @@ import {
   findProjectIndex,
 } from "./createProject";
 import "../style/main.css";
-import { crateProjectBtn } from "./domComponents";
+import { crateProjectBtn, createAddTaskModal } from "./domComponents";
 
 const createProjects = document.querySelector(".addNewProject");
 const projectHolder = document.querySelector(".newProjectContainer");
+const modalContainer = document.querySelector(".modalContainer");
+const showModalBtn = document.getElementById("showModal");
 
 // add task to the array list and display them on the screen
 createProjects.addEventListener("click", () => {
@@ -20,3 +22,12 @@ createProjects.addEventListener("click", () => {
     crateProjectBtn(name, projectHolder, indexNumber);
   });
 });
+
+// add the modal to the DOM and display it
+showModalBtn.addEventListener(
+  "click",
+  () => {
+    createAddTaskModal(modalContainer);
+  },
+  { once: true }
+);
