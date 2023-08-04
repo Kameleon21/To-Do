@@ -8,8 +8,29 @@ export const crateProjectBtn = (projectName, containerName, index) => {
 };
 
 // creates a form for the modal to add tasks
-export const createAddTaskModal = (modalContainer) => {
+export const createAddTaskModal = (modalContainer, clearModal, hideModal) => {
   const form = document.createElement("form");
+  const addTaskBtn = document.createElement("button");
+  const clearBtn = document.createElement("button");
+  const hideModalBtn = document.createElement("button");
+
+  // add values to all buttons
+  addTaskBtn.type = "button";
+  clearBtn.type = "button";
+  hideModalBtn.type = "button";
+
+  addTaskBtn.classList.add("modalBtn");
+  clearBtn.classList.add("modalBtn");
+  hideModalBtn.classList.add("modalBtn");
+
+  addTaskBtn.textContent = "Add Task";
+  clearBtn.textContent = "Clear";
+  hideModalBtn.textContent = "Hide Modal";
+
+  // add eventListeners
+  clearBtn.addEventListener("click", clearModal);
+  hideModalBtn.addEventListener("click", hideModal);
+
   form.innerHTML = `
   <label for="title">Title:</label>
   <input type="text" name="title" id="title" />
@@ -24,16 +45,20 @@ export const createAddTaskModal = (modalContainer) => {
   <input type="date" name="dueDate" id="dueDate" />
   <label for="priority">Priority:</label>
   <select name="priority" id="priority">
+  <option value = "" disabled hidden> Select priority</option>
   <option value="1">High</option>
   <option value="2">Medium</option>
   <option value="3">Low</option>
   </select>
+  <label for="projectName">Choose Project:</label>
+  <input type="text" name="projectName" id="project">
   <div class= "buttonHolder"> 
-    <button type="button" class="modalBtn">Add task</button>
-    <button type="button" class="modalBtn"> Clear</button>
-    <button type="button" class="modalBtn"> Hide Modal</button>
   </div>
   `;
   form.classList.add("taskForm");
+
+  form.querySelector(".buttonHolder").appendChild(addTaskBtn);
+  form.querySelector(".buttonHolder").appendChild(clearBtn);
+  form.querySelector(".buttonHolder").appendChild(hideModalBtn);
   modalContainer.appendChild(form);
 };
