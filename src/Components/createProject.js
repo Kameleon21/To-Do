@@ -32,15 +32,17 @@ export function findProjectIndex(projectList, projectName) {
 }
 
 // add task to a project
-export function addTaskToProject() {
-  const projectName = prompt("Enter the project name to add the task");
+export function addTaskToProject(
+  title,
+  description,
+  dueDate,
+  priority,
+  arrayName
+) {
+  const projectName = arrayName;
   const project = projectList.find((p) => p.name === projectName);
   if (project) {
     let projectNamesIndex = findProjectIndex(projectList, projectName);
-    let title = prompt("Enter the title of the task");
-    let description = prompt("Enter description");
-    let dueDate = prompt("Enter due date");
-    let priority = prompt("Enter the priority");
     createTask(
       title,
       description,

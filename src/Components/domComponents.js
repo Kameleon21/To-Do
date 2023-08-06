@@ -8,7 +8,7 @@ export const crateProjectBtn = (projectName, containerName, index) => {
 };
 
 // creates a form for the modal to add tasks
-export const createAddTaskModal = (modalContainer, clearModal, hideModal) => {
+export const createAddTaskModal = (modalContainer, clearModal, hideModal,addTask) => {
   const form = document.createElement("form");
   const addTaskBtn = document.createElement("button");
   const clearBtn = document.createElement("button");
@@ -30,6 +30,7 @@ export const createAddTaskModal = (modalContainer, clearModal, hideModal) => {
   // add eventListeners
   clearBtn.addEventListener("click", clearModal);
   hideModalBtn.addEventListener("click", hideModal);
+  addTaskBtn.addEventListener("click", addTask);
 
   form.innerHTML = `
   <label for="title">Title:</label>

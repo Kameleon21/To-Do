@@ -6,8 +6,7 @@ import {
 } from "./createProject";
 import "../style/main.css";
 import { crateProjectBtn, createAddTaskModal } from "./domComponents";
-import { clearModal, hideModal } from "./modal";
-import { tr } from "date-fns/locale";
+import { clearModal, hideModal, addTaskBtn } from "./modal";
 
 const createProjects = document.querySelector(".addNewProject");
 const projectHolder = document.querySelector(".newProjectContainer");
@@ -18,10 +17,9 @@ const showModalBtn = document.getElementById("showModal");
 createProjects.addEventListener("click", () => {
   createProject();
   projectHolder.textContent = " ";
-  projectList.forEach((p) => {
+  projectList.forEach((p, index) => {
     let name = p.getName();
-    let indexNumber = findProjectIndex(projectList, name);
-    crateProjectBtn(name, projectHolder, indexNumber);
+    crateProjectBtn(name, projectHolder, index);
   });
 });
 
@@ -29,5 +27,5 @@ createProjects.addEventListener("click", () => {
 showModalBtn.addEventListener("click", () => {
   modalContainer.textContent = "";
   hideModal();
-  createAddTaskModal(modalContainer, clearModal, hideModal);
+  createAddTaskModal(modalContainer, clearModal, hideModal, addTaskBtn);
 });
