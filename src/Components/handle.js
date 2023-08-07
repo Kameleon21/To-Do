@@ -3,10 +3,11 @@ import {
   addTaskToProject,
   projectList,
   findProjectIndex,
+  populateProjectDropdown,
 } from "./createProject";
 import "../style/main.css";
 import { crateProjectBtn, createAddTaskModal } from "./domComponents";
-import { clearModal, hideModal, addTaskBtn } from "./modal";
+import { clearModal, hideModal, addTask } from "./modal";
 
 const createProjects = document.querySelector(".addNewProject");
 const projectHolder = document.querySelector(".newProjectContainer");
@@ -25,7 +26,8 @@ createProjects.addEventListener("click", () => {
 
 // add the modal to the DOM and display it
 showModalBtn.addEventListener("click", () => {
-  modalContainer.textContent = "";
   hideModal();
-  createAddTaskModal(modalContainer, clearModal, hideModal, addTaskBtn);
+  modalContainer.textContent = "";
+  createAddTaskModal(modalContainer, clearModal, hideModal, addTask);
+  populateProjectDropdown(projectList);
 });

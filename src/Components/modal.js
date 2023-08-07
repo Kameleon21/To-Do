@@ -26,14 +26,13 @@ export const hideModal = () => {
 };
 
 // add task to the given project
-export const addTaskBtn = (arrayList) => {
+export const addTask = () => {
   // target the values and store them into variables
   let title = document.getElementById("title").value;
   let textarea = document.getElementById("description").value;
   let dueDate = document.getElementById("dueDate").value;
   let priority = document.getElementById("priority").value;
-  let projectsName = document.getElementById("project").value;
+  let projectsName = document.getElementById("projectDropdown").value;
   // create the task
   addTaskToProject(title, textarea, dueDate, priority, projectsName);
-  hideModal();
 };

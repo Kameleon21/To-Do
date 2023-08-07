@@ -8,7 +8,12 @@ export const crateProjectBtn = (projectName, containerName, index) => {
 };
 
 // creates a form for the modal to add tasks
-export const createAddTaskModal = (modalContainer, clearModal, hideModal,addTask) => {
+export const createAddTaskModal = (
+  modalContainer,
+  clearModal,
+  hideModal,
+  addTask
+) => {
   const form = document.createElement("form");
   const addTaskBtn = document.createElement("button");
   const clearBtn = document.createElement("button");
@@ -29,7 +34,10 @@ export const createAddTaskModal = (modalContainer, clearModal, hideModal,addTask
 
   // add eventListeners
   clearBtn.addEventListener("click", clearModal);
-  hideModalBtn.addEventListener("click", hideModal);
+  hideModalBtn.addEventListener("click", () => {
+    clearModal();
+    hideModal();
+  });
   addTaskBtn.addEventListener("click", addTask);
 
   form.innerHTML = `
@@ -47,12 +55,13 @@ export const createAddTaskModal = (modalContainer, clearModal, hideModal,addTask
   <label for="priority">Priority:</label>
   <select name="priority" id="priority">
   <option value = "" disabled hidden> Select priority</option>
-  <option value="1">High</option>
-  <option value="2">Medium</option>
-  <option value="3">Low</option>
+  <option value="High">High</option>
+  <option value="Medium">Medium</option>
+  <option value="Low">Low</option>
   </select>
   <label for="projectName">Choose Project:</label>
-  <input type="text" name="projectName" id="project">
+  <select id="projectDropdown">
+  </select>
   <div class= "buttonHolder"> 
   </div>
   `;

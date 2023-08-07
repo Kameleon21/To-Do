@@ -1,4 +1,5 @@
 import { createTask } from "./createTask";
+import { hideModal } from "./modal";
 
 // BluePrint for creating Projects
 class Project {
@@ -50,7 +51,26 @@ export function addTaskToProject(
       priority,
       projectList[projectNamesIndex].task
     );
+    hideModal();
   } else {
-    console.log("No project found");
+    alert(
+      "This project does not exist, you have to first create it before you can add a task to it"
+    );
   }
+}
+
+export function populateProjectDropdown(projectList) {
+  // Get the dropdown element from the DOM
+  const projectDropdown = document.getElementById("projectDropdown");
+
+  // Clear the current options in the dropdown
+  projectDropdown.innerHTML = "";
+
+  // Generate a new option element for each project and append it to the dropdown
+  projectList.forEach((project) => {
+    const option = document.createElement("option");
+    option.value = project.name; // Assuming each project has a 'name' property
+    option.text = project.name; // The text that will be displayed in the dropdown
+    projectDropdown.appendChild(option);
+  });
 }
