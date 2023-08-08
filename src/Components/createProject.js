@@ -1,5 +1,6 @@
 import { createTask } from "./createTask";
 import { hideModal } from "./modal";
+import { taskElement } from "./domComponents";
 
 // BluePrint for creating Projects
 class Project {
@@ -69,8 +70,18 @@ export function populateProjectDropdown(projectList) {
   // Generate a new option element for each project and append it to the dropdown
   projectList.forEach((project) => {
     const option = document.createElement("option");
-    option.value = project.name; // Assuming each project has a 'name' property
-    option.text = project.name; // The text that will be displayed in the dropdown
+    option.value = project.getName();
+    option.text = project.getName();
     projectDropdown.appendChild(option);
   });
 }
+
+// display tasks stored in a project on the screen
+export const getProjectsTask = (index) => {
+  const taskContainer = document.querySelector(".taskContainer");
+  taskContainer.textContent = " ";
+  projectList[index].task.forEach((element) => {
+    let name = element.getTitle();
+    taskElement(taskContainer, name);
+  });
+};

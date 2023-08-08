@@ -4,6 +4,7 @@ import {
   projectList,
   findProjectIndex,
   populateProjectDropdown,
+  getProjectsTask,
 } from "./createProject";
 import "../style/main.css";
 import { crateProjectBtn, createAddTaskModal } from "./domComponents";
@@ -13,6 +14,7 @@ const createProjects = document.querySelector(".addNewProject");
 const projectHolder = document.querySelector(".newProjectContainer");
 const modalContainer = document.querySelector(".modalContainer");
 const showModalBtn = document.getElementById("showModal");
+const taskContainer = document.querySelector(".taskContainer");
 
 // add task to the array list and display them on the screen
 createProjects.addEventListener("click", () => {
@@ -20,7 +22,7 @@ createProjects.addEventListener("click", () => {
   projectHolder.textContent = " ";
   projectList.forEach((p, index) => {
     let name = p.getName();
-    crateProjectBtn(name, projectHolder, index);
+    crateProjectBtn(name, projectHolder, index, getProjectsTask);
   });
 });
 

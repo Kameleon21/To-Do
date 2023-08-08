@@ -45,6 +45,8 @@
 .mainContent {
   background-color: var(--second-clr);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* btn styling  */
@@ -95,7 +97,20 @@
 }
 
 /* hide modal class */
-
 .hideModalClass {
   visibility: hidden;
+}
+
+/* task styles */
+.taskContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task {
+  width: 250px;
+  height: 2rem;
+  background-color: var(--fourth-clr);
 }

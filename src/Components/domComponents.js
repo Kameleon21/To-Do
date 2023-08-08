@@ -1,9 +1,19 @@
+import { getProjectsTask } from "./createProject";
+
 // creates a new element for a new project on the DOM
-export const crateProjectBtn = (projectName, containerName, index) => {
+export const crateProjectBtn = (
+  projectName,
+  containerName,
+  index,
+  getProjectsTask
+) => {
   const btn = document.createElement("button");
   btn.textContent = projectName;
   btn.classList.add("btn");
-  btn.dataset.ID = index;
+  btn.dataset.id = index;
+  btn.addEventListener("click", () => {
+    getProjectsTask(index);
+  });
   containerName.appendChild(btn);
 };
 
@@ -71,4 +81,16 @@ export const createAddTaskModal = (
   form.querySelector(".buttonHolder").appendChild(clearBtn);
   form.querySelector(".buttonHolder").appendChild(hideModalBtn);
   modalContainer.appendChild(form);
+};
+
+// create an element that will hold each task
+export const taskElement = (container, titleName) => {
+  const holder = document.createElement("div");
+  const titleHolder = document.createElement("p");
+
+  titleHolder.textContent = titleName;
+  holder.classList.add("task");
+
+  holder.appendChild(titleHolder);
+  container.appendChild(holder);
 };

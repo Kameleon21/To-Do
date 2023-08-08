@@ -9,7 +9,7 @@ export const clearModal = () => {
   let textarea = document.getElementById("description");
   let dueDate = document.getElementById("dueDate");
   let priority = document.getElementById("priority");
-  let projectsName = document.getElementById("project");
+  let projectsName = document.getElementById("projectDropdown");
   // set each input value to blank
   title.value = " ";
   textarea.value = " ";
