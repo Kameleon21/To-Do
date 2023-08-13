@@ -5,7 +5,7 @@ class Todo {
   constructor(title, description, dueDate, priority) {
     this.title = title;
     this.description = description;
-    this.dueDate = format(new Date(dueDate), "dd-MM-yyyy");
+    this.dueDate = dueDate;
     this.priority = priority;
   }
   //   Getters
@@ -41,4 +41,3 @@ export function createTask(title, description, dueDate, priority, arrayList) {
   const task = new Todo(title, description, dueDate, priority);
   arrayList.push(task);
 }
-

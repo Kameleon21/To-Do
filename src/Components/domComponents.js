@@ -1,5 +1,3 @@
-import { getProjectsTask } from "./createProject";
-
 // creates a new element for a new project on the DOM
 export const crateProjectBtn = (
   projectName,
@@ -106,11 +104,6 @@ export const taskElement = (
   holder.addEventListener("click", editTask);
   holder.dataset.projectId = projectIndex;
   holder.dataset.id = taskIndex;
-
-  holder.addEventListener("click", () => {
-    const taskContainer = document.querySelector(".taskContainer");
-    createAddTaskModal(taskContainer);
-  });
 
   holder.appendChild(titleHolder);
   holder.appendChild(dateHolder);

@@ -1,7 +1,8 @@
 import { createTask } from "./createTask";
-import { hideModal } from "./modal";
+import { hideModal, clearModal, addTask } from "./modal";
 import { taskElement } from "./domComponents";
-import { editTaskForm } from "./domComponents";
+import { createAddTaskModal } from "./domComponents";
+import format from "date-fns/format";
 
 // BluePrint for creating Projects
 class Project {
@@ -79,17 +80,31 @@ export function populateProjectDropdown(projectList) {
 
 // display tasks in edit modal functions
 export function editTask(event) {
-  // get the current task
   const projectId = parseInt(event.currentTarget.dataset.projectId);
   const taskId = parseInt(event.currentTarget.dataset.id);
-  // assign values to the field
-  let title = document.getElementById("title");
-  let textarea = document.getElementById("description");
-  let dueDate = document.getElementById("dueDate");
-  let priority = document.getElementById("priority");
-  let projectsName = document.getElementById("projectDropdown");
-  //
-  title.value = projectList[projectId].task[taskId].getTitle();
+
+  // Get task details
+  const task = projectList[projectId].task[taskId];
+
+  // Clear the modal container and populate it
+  const modalContainer = document.querySelector(".modalContainer");
+  modalContainer.textContent = "";
+  createAddTaskModal(modalContainer, clearModal, hideModal, addTask);
+  populateProjectDropdown(projectList);
+
+  // Display the modal
+  hideModal();
+
+  // Populate modal fields
+  document.getElementById("title").value = task.getTitle();
+  document.getElementById("description").value = task.getDescription();
+  document.getElementById("dueDate").value = format(
+    new Date(task.getDueDate()),
+    "yyyy-MM-dd"
+  );
+  document.getElementById("priority").value = task.getPriority();
+  document.getElementById("projectDropdown").value =
+    projectList[projectId].getName();
 }
 
 // display tasks stored in a project on the screen

@@ -35,3 +35,4 @@ export const addTask = () => {
   // create the task
   addTaskToProject(title, textarea, dueDate, priority, projectsName);
 };
+
