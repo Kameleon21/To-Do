@@ -1,7 +1,5 @@
 import { addTaskToProject } from "./createProject";
 
-const modalContainer = document.querySelector(".modalContainer");
-
 // clear the modal inputs
 export const clearModal = () => {
   // target each input
@@ -20,6 +18,7 @@ export const clearModal = () => {
 
 // hide the modal
 export const hideModal = () => {
+  const modalContainer = document.querySelector(".modalContainer");
   if (modalContainer.classList.contains("hideModalClass")) {
     modalContainer.classList.remove("hideModalClass");
   } else modalContainer.classList.add("hideModalClass");

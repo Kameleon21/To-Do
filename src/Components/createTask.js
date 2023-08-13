@@ -41,3 +41,4 @@ export function createTask(title, description, dueDate, priority, arrayList) {
   const task = new Todo(title, description, dueDate, priority);
   arrayList.push(task);
 }
+

@@ -1,6 +1,7 @@
 import { createTask } from "./createTask";
 import { hideModal } from "./modal";
 import { taskElement } from "./domComponents";
+import { editTaskForm } from "./domComponents";
 
 // BluePrint for creating Projects
 class Project {
@@ -76,12 +77,37 @@ export function populateProjectDropdown(projectList) {
   });
 }
 
+// display tasks in edit modal functions
+export function editTask(event) {
+  // get the current task
+  const projectId = parseInt(event.currentTarget.dataset.projectId);
+  const taskId = parseInt(event.currentTarget.dataset.id);
+  // assign values to the field
+  let title = document.getElementById("title");
+  let textarea = document.getElementById("description");
+  let dueDate = document.getElementById("dueDate");
+  let priority = document.getElementById("priority");
+  let projectsName = document.getElementById("projectDropdown");
+  //
+  title.value = projectList[projectId].task[taskId].getTitle();
+}
+
 // display tasks stored in a project on the screen
-export const getProjectsTask = (index) => {
+export const getProjectsTask = (projectIndex) => {
   const taskContainer = document.querySelector(".taskContainer");
   taskContainer.textContent = " ";
-  projectList[index].task.forEach((element) => {
-    let name = element.getTitle();
-    taskElement(taskContainer, name);
+  projectList[projectIndex].task.forEach((element, taskIndex) => {
+    const name = element.getTitle();
+    const date = element.getDueDate();
+    const priority = element.getPriority();
+    taskElement(
+      taskContainer,
+      name,
+      date,
+      priority,
+      projectIndex,
+      taskIndex,
+      editTask
+    );
   });
 };

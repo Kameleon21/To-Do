@@ -84,13 +84,38 @@ export const createAddTaskModal = (
 };
 
 // create an element that will hold each task
-export const taskElement = (container, titleName) => {
+export const taskElement = (
+  modalContainer,
+  titleName,
+  dueDate,
+  priority,
+  projectIndex,
+  taskIndex,
+  editTask
+) => {
   const holder = document.createElement("div");
   const titleHolder = document.createElement("p");
+  const dateHolder = document.createElement("p");
+  const priorityHolder = document.createElement("div");
 
   titleHolder.textContent = titleName;
+  dateHolder.textContent = dueDate;
+  priorityHolder.textContent = priority;
   holder.classList.add("task");
 
+  holder.addEventListener("click", editTask);
+  holder.dataset.projectId = projectIndex;
+  holder.dataset.id = taskIndex;
+
+  holder.addEventListener("click", () => {
+    const taskContainer = document.querySelector(".taskContainer");
+    createAddTaskModal(taskContainer);
+  });
+
   holder.appendChild(titleHolder);
-  container.appendChild(holder);
+  holder.appendChild(dateHolder);
+  holder.appendChild(priorityHolder);
+  modalContainer.appendChild(holder);
 };
+
+// display the edit form for each task
