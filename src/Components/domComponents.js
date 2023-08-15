@@ -96,21 +96,23 @@ export const taskElement = (
   const holder = document.createElement("div");
   const titleHolder = document.createElement("p");
   const dateHolder = document.createElement("p");
-  const priorityHolder = document.createElement("div");
 
   titleHolder.textContent = titleName;
   dateHolder.textContent = dueDate;
-  priorityHolder.textContent = priority;
   holder.classList.add("task");
-
+  // condition to determine task
+  if (priority === "High") {
+    holder.classList.add("high");
+  } else if (priority === "Medium") {
+    holder.classList.add("medium");
+  } else {
+    holder.classList.add("low");
+  }
   holder.addEventListener("click", editTask);
   holder.dataset.projectId = projectIndex;
   holder.dataset.id = taskIndex;
 
   holder.appendChild(titleHolder);
   holder.appendChild(dateHolder);
-  holder.appendChild(priorityHolder);
   modalContainer.appendChild(holder);
 };
-
-// display the edit form for each task

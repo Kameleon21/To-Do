@@ -61,6 +61,7 @@
 
 /* Projects list styling */
 .newProjectContainer {
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,5 +116,25 @@
   height: 2rem;
   display: flex;
   justify-content: space-around;
-  background-color: var(--fourth-clr);
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 2px solid ;
+}
+
+.task:hover {
+  cursor: crosshair;
+}
+
+/* styles for to-do priority levels */
+.high {
+  border-color: red;
+}
+
+.medium {
+  border-color: orange;
+}
+
+.low {
+  border-color: blue;
 }

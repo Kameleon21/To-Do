@@ -58,6 +58,7 @@ export function addTaskToProject(
       projectList[projectNamesIndex].task
     );
     hideModal();
+    getProjectsTask(projectNamesIndex);
   } else {
     alert(
       "This project does not exist, you have to first create it before you can add a task to it"

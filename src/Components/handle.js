@@ -18,7 +18,7 @@ const showModalBtn = document.getElementById("showModal");
 // add task to the array list and display them on the screen
 createProjects.addEventListener("click", () => {
   createProject();
-  projectHolder.textContent = " ";
+  projectHolder.textContent = "";
   projectList.forEach((p, index) => {
     let name = p.getName();
     crateProjectBtn(name, projectHolder, index, getProjectsTask);
