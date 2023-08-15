@@ -1,8 +1,7 @@
 import { createTask } from "./createTask";
-import { hideModal, clearModal, addTask } from "./modal";
+import { hideModal, clearModal, setNewTaskDetails } from "./modal";
 import { taskElement } from "./domComponents";
 import { createAddTaskModal } from "./domComponents";
-import format from "date-fns/format";
 
 // BluePrint for creating Projects
 class Project {
@@ -13,6 +12,10 @@ class Project {
 
   getName() {
     return this.name;
+  }
+
+  setName(name) {
+    this.name = name;
   }
 }
 
@@ -88,8 +91,11 @@ export function editTask(event) {
 
   // Clear the modal container and populate it
   const modalContainer = document.querySelector(".modalContainer");
+  // give modal a dataset for specific project and task ID
+  modalContainer.dataset.projectId = projectId;
+  modalContainer.dataset.taskId = taskId;
   modalContainer.textContent = "";
-  createAddTaskModal(modalContainer, clearModal, hideModal, addTask);
+  createAddTaskModal(modalContainer, clearModal, hideModal, setNewTaskDetails);
   populateProjectDropdown(projectList);
 
   // Display the modal
@@ -98,13 +104,14 @@ export function editTask(event) {
   // Populate modal fields
   document.getElementById("title").value = task.getTitle();
   document.getElementById("description").value = task.getDescription();
-  document.getElementById("dueDate").value = format(
-    new Date(task.getDueDate()),
-    "yyyy-MM-dd"
-  );
+  document.getElementById("dueDate").value = task.getDueDate();
   document.getElementById("priority").value = task.getPriority();
   document.getElementById("projectDropdown").value =
     projectList[projectId].getName();
+
+  //Change add task to edit task
+  const title = document.getElementById("1");
+  title.textContent = "Edit Task";
 }
 
 // display tasks stored in a project on the screen

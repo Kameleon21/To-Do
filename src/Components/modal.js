@@ -1,4 +1,9 @@
-import { addTaskToProject } from "./createProject";
+import {
+  addTaskToProject,
+  getProjectsTask,
+  UpdateTaskNewProject,
+  projectList,
+} from "./createProject";
 
 // clear the modal inputs
 export const clearModal = () => {
@@ -36,3 +41,35 @@ export const addTask = () => {
   addTaskToProject(title, textarea, dueDate, priority, projectsName);
 };
 
+export const setNewTaskDetails = () => {
+  // target modal
+  const modalContainer = document.querySelector(".modalContainer");
+
+  // get dataset vales for modal
+  const projectId = parseInt(modalContainer.dataset.projectId);
+  const taskId = parseInt(modalContainer.dataset.taskId);
+
+  // Get task details
+  const task = projectList[projectId].task[taskId];
+
+  // set new values
+  task.setTitle(document.getElementById("title").value);
+  task.setDescription(document.getElementById("description").value);
+  task.setDueDate(document.getElementById("dueDate").value);
+  task.setPriority(document.getElementById("priority").value);
+  let projectsName = document.getElementById("projectDropdown").value;
+
+  // create a condition that checks if the value of projectDropDown has been changed to a new project
+  if (projectsName !== projectList[projectId].getName()) {
+    let title = document.getElementById("title").value;
+    let textarea = document.getElementById("description").value;
+    let dueDate = document.getElementById("dueDate").value;
+    let priority = document.getElementById("priority").value;
+    addTaskToProject(title, textarea, dueDate, priority, projectsName);
+    projectList[projectId].task.splice(taskId, 1);
+    hideModal();
+    getProjectsTask(projectId);
+  }
+  hideModal();
+  getProjectsTask(projectId);
+};

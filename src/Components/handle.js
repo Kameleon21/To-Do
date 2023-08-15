@@ -14,7 +14,6 @@ const createProjects = document.querySelector(".addNewProject");
 const projectHolder = document.querySelector(".newProjectContainer");
 const modalContainer = document.querySelector(".modalContainer");
 const showModalBtn = document.getElementById("showModal");
-const taskContainer = document.querySelector(".taskContainer");
 
 // add task to the array list and display them on the screen
 createProjects.addEventListener("click", () => {

@@ -1,4 +1,4 @@
-import format from "date-fns/format";
+import { parse, format } from "date-fns";
 
 // blueprint to create task
 class Todo {
@@ -8,6 +8,7 @@ class Todo {
     this.dueDate = dueDate;
     this.priority = priority;
   }
+
   //   Getters
   getTitle() {
     return this.title;
@@ -18,6 +19,7 @@ class Todo {
   getDueDate() {
     return this.dueDate;
   }
+
   getPriority() {
     return this.priority;
   }
@@ -29,7 +31,7 @@ class Todo {
     this.description = description;
   }
   setDueDate(dueDate) {
-    this.dueDate = format(new Date(dueDate), "dd-MM-yyyy");
+    this.dueDate = dueDate;
   }
   setPriority(priority) {
     this.priority = priority;

@@ -40,6 +40,8 @@ export const createAddTaskModal = (
   clearBtn.textContent = "Clear";
   hideModalBtn.textContent = "Hide Modal";
 
+  addTaskBtn.setAttribute("id", "1");
+
   // add eventListeners
   clearBtn.addEventListener("click", clearModal);
   hideModalBtn.addEventListener("click", () => {
