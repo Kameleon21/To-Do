@@ -1,4 +1,4 @@
-import { createTask } from "./createTask";
+import { createTask, deleteTask } from "./createTask";
 import { hideModal, clearModal, setNewTaskDetails } from "./modal";
 import { taskElement } from "./domComponents";
 import { createAddTaskModal } from "./domComponents";
@@ -58,7 +58,6 @@ export function addTaskToProject(
       projectList[projectNamesIndex].task
     );
     hideModal();
-    getProjectsTask(projectNamesIndex);
   } else {
     alert(
       "This project does not exist, you have to first create it before you can add a task to it"
@@ -130,7 +129,8 @@ export const getProjectsTask = (projectIndex) => {
       priority,
       projectIndex,
       taskIndex,
-      editTask
+      editTask,
+      deleteTask
     );
   });
 };

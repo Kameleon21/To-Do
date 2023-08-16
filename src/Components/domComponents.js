@@ -91,14 +91,18 @@ export const taskElement = (
   priority,
   projectIndex,
   taskIndex,
-  editTask
+  editTask,
+  deleteTask
 ) => {
   const holder = document.createElement("div");
   const titleHolder = document.createElement("p");
   const dateHolder = document.createElement("p");
+  const delBtn = document.createElement("button");
 
   titleHolder.textContent = titleName;
   dateHolder.textContent = dueDate;
+  delBtn.textContent = "Delete";
+
   holder.classList.add("task");
   // condition to determine task
   if (priority === "High") {
@@ -111,8 +115,13 @@ export const taskElement = (
   holder.addEventListener("click", editTask);
   holder.dataset.projectId = projectIndex;
   holder.dataset.id = taskIndex;
+  delBtn.dataset.projectId = projectIndex;
+  delBtn.dataset.id = taskIndex;
+
+  delBtn.addEventListener("click", deleteTask);
 
   holder.appendChild(titleHolder);
   holder.appendChild(dateHolder);
+  holder.appendChild(delBtn);
   modalContainer.appendChild(holder);
 };

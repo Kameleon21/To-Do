@@ -1,8 +1,8 @@
 import {
   addTaskToProject,
   getProjectsTask,
-  UpdateTaskNewProject,
   projectList,
+  findProjectIndex,
 } from "./createProject";
 
 // clear the modal inputs
@@ -37,8 +37,12 @@ export const addTask = () => {
   let dueDate = document.getElementById("dueDate").value;
   let priority = document.getElementById("priority").value;
   let projectsName = document.getElementById("projectDropdown").value;
+  // get the index of the project
+  const projectIndex = findProjectIndex(projectList, projectsName);
   // create the task
   addTaskToProject(title, textarea, dueDate, priority, projectsName);
+  // update the display
+  getProjectsTask(projectIndex);
 };
 
 export const setNewTaskDetails = () => {
