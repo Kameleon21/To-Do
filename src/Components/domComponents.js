@@ -97,14 +97,18 @@ export const taskElement = (
   const holder = document.createElement("div");
   const titleHolder = document.createElement("p");
   const dateHolder = document.createElement("p");
+  const btnHolder = document.createElement("div");
   const delBtn = document.createElement("button");
+  const editBtn = document.createElement("button");
 
   titleHolder.textContent = titleName;
   dateHolder.textContent = dueDate;
   delBtn.textContent = "Delete";
+  editBtn.textContent = "Edit";
 
   holder.classList.add("task");
-  // condition to determine task
+
+  // condition to determine task color
   if (priority === "High") {
     holder.classList.add("high");
   } else if (priority === "Medium") {
@@ -112,16 +116,20 @@ export const taskElement = (
   } else {
     holder.classList.add("low");
   }
-  holder.addEventListener("click", editTask);
+  editBtn.addEventListener("click", editTask);
   holder.dataset.projectId = projectIndex;
   holder.dataset.id = taskIndex;
   delBtn.dataset.projectId = projectIndex;
   delBtn.dataset.id = taskIndex;
+  editBtn.dataset.projectId = projectIndex;
+  editBtn.dataset.id = taskIndex;
 
+  btnHolder.appendChild(editBtn);
+  btnHolder.appendChild(delBtn);
   delBtn.addEventListener("click", deleteTask);
 
   holder.appendChild(titleHolder);
   holder.appendChild(dateHolder);
-  holder.appendChild(delBtn);
+  holder.appendChild(btnHolder);
   modalContainer.appendChild(holder);
 };

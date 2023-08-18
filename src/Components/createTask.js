@@ -50,7 +50,10 @@ export const deleteTask = (event) => {
   const projectId = parseInt(event.currentTarget.dataset.projectId);
   const taskId = parseInt(event.currentTarget.dataset.id);
 
-  // delete that item form array and then update the screen
+  // get the current task
+  const task = projectList[projectId].task[taskId];
+
   projectList[projectId].task.splice(taskId, 1);
+  console.log(projectList[projectId].task);
   getProjectsTask(projectId);
 };
