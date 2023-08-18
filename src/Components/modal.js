@@ -1,9 +1,9 @@
 import {
   addTaskToProject,
-  getProjectsTask,
   projectList,
   findProjectIndex,
 } from "./createProject";
+import { getProjectsTask } from "./createTask";
 
 // clear the modal inputs
 export const clearModal = () => {

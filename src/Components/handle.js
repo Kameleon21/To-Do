@@ -1,14 +1,12 @@
 import {
   createProject,
-  addTaskToProject,
   projectList,
-  findProjectIndex,
   populateProjectDropdown,
-  getProjectsTask,
 } from "./createProject";
 import "../style/main.css";
 import { crateProjectBtn, createAddTaskModal } from "./domComponents";
 import { clearModal, hideModal, addTask } from "./modal";
+import { getProjectsTask } from "./createTask";
 
 const createProjects = document.querySelector(".addNewProject");
 const projectHolder = document.querySelector(".newProjectContainer");
