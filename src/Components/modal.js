@@ -76,6 +76,7 @@ export const setNewTaskDetails = () => {
     localStorage.setItem("projectList", JSON.stringify(projectList));
     getProjectsTask(projectId);
   }
+  localStorage.setItem("projectList", JSON.stringify(projectList));
   hideModal();
   getProjectsTask(projectId);
 };

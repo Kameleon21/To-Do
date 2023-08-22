@@ -51,6 +51,7 @@ export const deleteTask = (event) => {
   const projectId = parseInt(event.currentTarget.dataset.projectId);
   const taskId = parseInt(event.currentTarget.dataset.id);
   projectList[projectId].task.splice(taskId, 1);
+  localStorage.setItem("projectList", JSON.stringify(projectList));
   getProjectsTask(projectId);
 };
 
