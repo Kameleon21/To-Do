@@ -23,10 +23,26 @@ export let projectList = [];
 
 // create a new project and add then to the projectList array
 export function createProject() {
-  const projectName = prompt("Enter the name of the project");
-  const project = new Project(projectName);
-  projectList.push(project);
-  console.table(projectList);
+  let projectName = capitalizeFirstLetter(
+    prompt("Enter the name of the project")
+  );
+  if (projectName.length > 1) {
+    const project = new Project(projectName);
+    projectList.push(project);
+  } else {
+    let flag = true;
+    while (flag) {
+      alert("Project word count has to be higher than 1");
+      projectName = capitalizeFirstLetter(
+        prompt("Enter the name of the project")
+      );
+      if (projectName.length > 1) {
+        flag = false;
+      }
+    }
+    const project = new Project(projectName);
+    projectList.push(project);
+  }
 }
 
 // find out the index of the given project
@@ -71,4 +87,9 @@ export function populateProjectDropdown(projectList) {
     option.text = project.getName();
     projectDropdown.appendChild(option);
   });
+}
+
+// capitalize the first letter of project name
+function capitalizeFirstLetter(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
 }
