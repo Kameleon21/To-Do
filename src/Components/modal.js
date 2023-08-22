@@ -41,6 +41,7 @@ export const addTask = () => {
   const projectIndex = findProjectIndex(projectList, projectsName);
   // create the task
   addTaskToProject(title, textarea, dueDate, priority, projectsName);
+  localStorage.setItem("projectList", JSON.stringify(projectList));
   // update the display
   getProjectsTask(projectIndex);
 };
@@ -72,6 +73,7 @@ export const setNewTaskDetails = () => {
     addTaskToProject(title, textarea, dueDate, priority, projectsName);
     projectList[projectId].task.splice(taskId, 1);
     hideModal();
+    localStorage.setItem("projectList", JSON.stringify(projectList));
     getProjectsTask(projectId);
   }
   hideModal();

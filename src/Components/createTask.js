@@ -3,7 +3,7 @@ import { taskElement, createAddTaskModal } from "./domComponents";
 import { hideModal, clearModal, setNewTaskDetails } from "./modal";
 
 // blueprint to create task
-class Todo {
+export class Todo {
   constructor(title, description, dueDate, priority) {
     this.title = title;
     this.description = description;

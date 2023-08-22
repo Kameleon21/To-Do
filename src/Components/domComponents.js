@@ -9,6 +9,8 @@ export const crateProjectBtn = (
   btn.textContent = projectName;
   btn.classList.add("btn");
   btn.dataset.id = index;
+  btn.setAttribute("id", "project");
+  btn.setAttribute("value", projectName);
   btn.addEventListener("click", () => {
     getProjectsTask(index);
   });

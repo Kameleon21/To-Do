@@ -1,8 +1,9 @@
 import { createTask } from "./createTask";
 import { hideModal } from "./modal";
+import { addProjectsToStorage } from "./handle";
 
 // BluePrint for creating Projects
-class Project {
+export class Project {
   constructor(name) {
     this.name = name;
     this.task = [];
@@ -18,7 +19,7 @@ class Project {
 }
 
 // create array that will store all projects
-export const projectList = [];
+export let projectList = [];
 
 // create a new project and add then to the projectList array
 export function createProject() {
