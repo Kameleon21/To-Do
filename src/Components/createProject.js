@@ -1,6 +1,5 @@
 import { createTask } from "./createTask";
 import { hideModal } from "./modal";
-import { addProjectsToStorage } from "./handle";
 
 // BluePrint for creating Projects
 export class Project {

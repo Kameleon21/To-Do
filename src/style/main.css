@@ -71,6 +71,15 @@
   transform: translate(-50%, -50%);
 }
 
+
+
+#showModal {
+  background-color: #5dbea3;
+  border-color: #5dbea3;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 /* task form  */
 .taskForm {
   background-color: var(--third-clr);
@@ -132,4 +141,16 @@
 
 .low {
   border-color: blue;
+}
+
+/* class for icons */
+.icon {
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+}
+
+.btnHolderForTask {
+  display: flex;
+  gap: 5px;
 }

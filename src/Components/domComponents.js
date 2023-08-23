@@ -1,3 +1,5 @@
+import delIcon from "../assets/delete.png";
+import editIcon from "../assets/pencil.png";
 // creates a new element for a new project on the DOM
 export const crateProjectBtn = (
   projectName,
@@ -105,8 +107,8 @@ export const taskElement = (
 
   titleHolder.textContent = titleName;
   dateHolder.textContent = dueDate;
-  delBtn.textContent = "Delete";
-  editBtn.textContent = "Edit";
+  delBtn.innerHTML = `<img src="${delIcon}" alt="delete icon" class="icon">`;
+  editBtn.innerHTML = `<img src="${editIcon}" alt="edit icon" class="icon">`;
 
   holder.classList.add("task");
 
@@ -128,6 +130,7 @@ export const taskElement = (
 
   btnHolder.appendChild(editBtn);
   btnHolder.appendChild(delBtn);
+  btnHolder.classList.add("btnHolderForTask");
   delBtn.addEventListener("click", deleteTask);
 
   holder.appendChild(titleHolder);
