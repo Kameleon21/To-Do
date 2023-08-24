@@ -5,10 +5,14 @@ export const crateProjectDiv = (
   projectName,
   containerName,
   index,
-  getProjectsTask
+  getProjectsTask,
+  delProject,
+  displayProjects
 ) => {
   const projectDiv = document.createElement("div");
+  const delBtn = document.createElement("button");
   projectDiv.textContent = projectName;
+  delBtn.textContent = "X";
   projectDiv.classList.add("projectDiv");
   projectDiv.dataset.id = index;
   projectDiv.setAttribute("id", "project");
@@ -16,6 +20,12 @@ export const crateProjectDiv = (
   projectDiv.addEventListener("click", () => {
     getProjectsTask(index);
   });
+  delBtn.addEventListener("click", (event) => {
+    delProject(index);
+    event.stopPropagation();
+    displayProjects();
+  });
+  projectDiv.appendChild(delBtn);
   containerName.appendChild(projectDiv);
 };
 

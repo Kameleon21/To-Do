@@ -67,6 +67,7 @@
 /* new project divs */
 .projectDiv {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 20px;
   padding: 5px;

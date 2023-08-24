@@ -3,6 +3,7 @@ import {
   projectList,
   populateProjectDropdown,
   Project,
+  deleteProjectObject,
 } from "./createProject";
 import "../style/main.css";
 import { crateProjectDiv, createAddTaskModal } from "./domComponents";
@@ -20,7 +21,14 @@ createProjects.addEventListener("click", () => {
   projectHolder.textContent = "";
   projectList.forEach((p, index) => {
     let name = p.getName();
-    crateProjectDiv(name, projectHolder, index, getProjectsTask);
+    crateProjectDiv(
+      name,
+      projectHolder,
+      index,
+      getProjectsTask,
+      deleteProjectObject,
+      displayStoredProjects
+    );
   });
   localStorage.setItem("projectList", JSON.stringify(projectList));
 });
@@ -34,11 +42,18 @@ showModalBtn.addEventListener("click", () => {
 });
 
 // if projects stored in localStorage display them
-function displayStoredProjects(projects) {
+function displayStoredProjects() {
   projectHolder.textContent = "";
-  projects.forEach((p, index) => {
+  projectList.forEach((p, index) => {
     let name = p.getName();
-    crateProjectDiv(name, projectHolder, index, getProjectsTask);
+    crateProjectDiv(
+      name,
+      projectHolder,
+      index,
+      getProjectsTask,
+      deleteProjectObject,
+      displayStoredProjects
+    );
   });
 }
 
@@ -67,6 +82,5 @@ function populateProjectListFromStorage() {
 
 window.onload = () => {
   populateProjectListFromStorage();
-  displayStoredProjects(projectList);
+  displayStoredProjects();
 };
-

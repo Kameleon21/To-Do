@@ -90,5 +90,13 @@ export function populateProjectDropdown(projectList) {
 
 // capitalize the first letter of project name
 function capitalizeFirstLetter(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 }
+
+// delete a project object form the array list
+export const deleteProjectObject = (index) => {
+  projectList.splice(index, 1);
+  localStorage.setItem("projectList", JSON.stringify(projectList));
+  const taskContainer = document.querySelector(".taskContainer");
+  taskContainer.textContent = "";
+};
