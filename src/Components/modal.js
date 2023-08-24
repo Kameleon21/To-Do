@@ -80,3 +80,5 @@ export const setNewTaskDetails = () => {
   hideModal();
   getProjectsTask(projectId);
 };
+
+

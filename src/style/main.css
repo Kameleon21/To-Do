@@ -8,6 +8,7 @@
   --third-clr: #3a506b;
   --fourth-clr: #5bc0be;
   --fifth-clr: #6fffe9;
+  --modalBtn-clr: #0000ff;
 }
 
 .contain {
@@ -31,6 +32,7 @@
   flex-direction: column;
   gap: 5px;
   margin-top: 0.5rem;
+  width: 100%;
 }
 
 .bottom-sideBar h2 {
@@ -59,8 +61,19 @@
   margin-top: 8px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+/* new project divs */
+.projectDiv {
+  display: flex;
   align-items: center;
-  gap: 5px;
+  height: 20px;
+  padding: 5px;
+  border: 2px solid;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* task form container */
@@ -71,13 +84,12 @@
   transform: translate(-50%, -50%);
 }
 
-
-
 #showModal {
   background-color: #5dbea3;
   border-color: #5dbea3;
   border-radius: 5px;
   padding: 5px;
+  margin-top: 10px;
 }
 
 /* task form  */
@@ -87,6 +99,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  border-radius: 10px;
 }
 
 .buttonHolder {
@@ -100,6 +113,7 @@
   background: var(--fourth-clr);
   border-color: var(--fourth-clr);
   border-radius: 5px;
+  padding: 2px;
 }
 
 /* hide modal class */
@@ -123,7 +137,7 @@
   align-items: center;
   background-color: #fff;
   border-radius: 10px;
-  border: 2px solid;
+  border: 3px solid;
 }
 
 .task:hover {
@@ -153,4 +167,55 @@
 .btnHolderForTask {
   display: flex;
   gap: 5px;
+}
+
+/* media queries for larger screen */
+@media screen and (min-width: 700px) {
+  .contain {
+    grid-template-columns: 1fr 4fr;
+  }
+
+  .taskContainer {
+    width: 700px;
+    height: 900px;
+    align-items: center;
+  }
+
+  .task {
+    width: 60vw;
+    font-size: 1.3rem;
+    transition: linear 1ms;
+  }
+
+  .task:hover {
+    width: 62vw;
+  }
+
+  .taskForm {
+    width: 250px;
+    height: 300px;
+  }
+
+  .taskContainer {
+    gap: 1rem;
+  }
+
+  .sideBar {
+    font-size: 2rem;
+  }
+  .btnHolderForTask {
+    gap: 10px;
+  }
+
+  #showModal {
+    transition: linear 1ms;
+  }
+
+  #showModal:hover {
+    transform: scale(1.2);
+  }
+
+  .modalBtn {
+    padding: 5px;
+  }
 }

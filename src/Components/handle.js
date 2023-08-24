@@ -5,7 +5,7 @@ import {
   Project,
 } from "./createProject";
 import "../style/main.css";
-import { crateProjectBtn, createAddTaskModal } from "./domComponents";
+import { crateProjectDiv, createAddTaskModal } from "./domComponents";
 import { clearModal, hideModal, addTask } from "./modal";
 import { getProjectsTask, Todo } from "./createTask";
 
@@ -20,7 +20,7 @@ createProjects.addEventListener("click", () => {
   projectHolder.textContent = "";
   projectList.forEach((p, index) => {
     let name = p.getName();
-    crateProjectBtn(name, projectHolder, index, getProjectsTask);
+    crateProjectDiv(name, projectHolder, index, getProjectsTask);
   });
   localStorage.setItem("projectList", JSON.stringify(projectList));
 });
@@ -38,7 +38,7 @@ function displayStoredProjects(projects) {
   projectHolder.textContent = "";
   projects.forEach((p, index) => {
     let name = p.getName();
-    crateProjectBtn(name, projectHolder, index, getProjectsTask);
+    crateProjectDiv(name, projectHolder, index, getProjectsTask);
   });
 }
 

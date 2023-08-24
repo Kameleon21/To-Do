@@ -1,22 +1,22 @@
 import delIcon from "../assets/delete.png";
 import editIcon from "../assets/pencil.png";
 // creates a new element for a new project on the DOM
-export const crateProjectBtn = (
+export const crateProjectDiv = (
   projectName,
   containerName,
   index,
   getProjectsTask
 ) => {
-  const btn = document.createElement("button");
-  btn.textContent = projectName;
-  btn.classList.add("btn");
-  btn.dataset.id = index;
-  btn.setAttribute("id", "project");
-  btn.setAttribute("value", projectName);
-  btn.addEventListener("click", () => {
+  const projectDiv = document.createElement("div");
+  projectDiv.textContent = projectName;
+  projectDiv.classList.add("projectDiv");
+  projectDiv.dataset.id = index;
+  projectDiv.setAttribute("id", "project");
+  projectDiv.setAttribute("value", projectName);
+  projectDiv.addEventListener("click", () => {
     getProjectsTask(index);
   });
-  containerName.appendChild(btn);
+  containerName.appendChild(projectDiv);
 };
 
 // creates a form for the modal to add tasks
