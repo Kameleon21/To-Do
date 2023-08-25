@@ -34,27 +34,30 @@ export const createAddTaskModal = (
   modalContainer,
   clearModal,
   hideModal,
-  addTask
+  addTask,
+  addProject,
+  formType
 ) => {
   const form = document.createElement("form");
-  const addTaskBtn = document.createElement("button");
+  const addTaskAndProject = document.createElement("button");
   const clearBtn = document.createElement("button");
   const hideModalBtn = document.createElement("button");
 
   // add values to all buttons
-  addTaskBtn.type = "button";
+  addTaskAndProject.type = "button";
   clearBtn.type = "button";
   hideModalBtn.type = "button";
 
-  addTaskBtn.classList.add("modalBtn");
+  addTaskAndProject.classList.add("modalBtn");
   clearBtn.classList.add("modalBtn");
   hideModalBtn.classList.add("modalBtn");
 
-  addTaskBtn.textContent = "Add Task";
+  addTaskAndProject.textContent =
+    formType === "task" ? "Add Task" : "Create Project";
   clearBtn.textContent = "Clear";
   hideModalBtn.textContent = "Hide Modal";
 
-  addTaskBtn.setAttribute("id", "1");
+  addTaskAndProject.setAttribute("id", "1");
 
   // add eventListeners
   clearBtn.addEventListener("click", clearModal);
@@ -62,9 +65,14 @@ export const createAddTaskModal = (
     clearModal();
     hideModal();
   });
-  addTaskBtn.addEventListener("click", addTask);
+  addTaskAndProject.addEventListener("click", () => {
+    formType === "task" ? addTask() : addProject();
+  });
 
   form.innerHTML = `
+  ${
+    formType === "task"
+      ? `
   <label for="title">Title:</label>
   <input type="text" name="title" id="title" />
   <label for="description">Description:</label>
@@ -85,13 +93,18 @@ export const createAddTaskModal = (
   </select>
   <label for="projectName">Choose Project:</label>
   <select id="projectDropdown">
-  </select>
+  </select> `
+      : `
+  <label for="projectName">Project Name:</label>
+    <input type="text" name="projectName" id="projectName" />
+  `
+  }
   <div class= "buttonHolder"> 
   </div>
   `;
   form.classList.add("taskForm");
 
-  form.querySelector(".buttonHolder").appendChild(addTaskBtn);
+  form.querySelector(".buttonHolder").appendChild(addTaskAndProject);
   form.querySelector(".buttonHolder").appendChild(clearBtn);
   form.querySelector(".buttonHolder").appendChild(hideModalBtn);
   modalContainer.appendChild(form);
@@ -148,3 +161,4 @@ export const taskElement = (
   holder.appendChild(btnHolder);
   modalContainer.appendChild(holder);
 };
+

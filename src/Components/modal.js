@@ -2,8 +2,12 @@ import {
   addTaskToProject,
   projectList,
   findProjectIndex,
+  createProject,
+  deleteProjectObject,
 } from "./createProject";
 import { getProjectsTask } from "./createTask";
+import { crateProjectDiv } from "./domComponents";
+import { displayStoredProjects } from "./handle";
 
 // clear the modal inputs
 export const clearModal = () => {
@@ -46,6 +50,29 @@ export const addTask = () => {
   getProjectsTask(projectIndex);
 };
 
+// add Project to project list
+export const addProject = () => {
+  // target the forms input
+  let name = document.getElementById("projectName").value;
+  // create the project
+  createProject(name);
+  const projectHolder = document.querySelector(".newProjectContainer");
+  projectHolder.textContent = "";
+  projectList.forEach((p, index) => {
+    let name = p.getName();
+    crateProjectDiv(
+      name,
+      projectHolder,
+      index,
+      getProjectsTask,
+      deleteProjectObject,
+      displayStoredProjects
+    );
+  });
+  hideModal();
+  localStorage.setItem("projectList", JSON.stringify(projectList));
+};
+
 export const setNewTaskDetails = () => {
   // target modal
   const modalContainer = document.querySelector(".modalContainer");
@@ -80,5 +107,3 @@ export const setNewTaskDetails = () => {
   hideModal();
   getProjectsTask(projectId);
 };
-
-

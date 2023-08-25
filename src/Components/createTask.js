@@ -1,6 +1,6 @@
 import { projectList, populateProjectDropdown } from "./createProject";
 import { taskElement, createAddTaskModal } from "./domComponents";
-import { hideModal, clearModal, setNewTaskDetails } from "./modal";
+import { hideModal, clearModal, setNewTaskDetails, addProject } from "./modal";
 
 // blueprint to create task
 export class Todo {
@@ -90,7 +90,14 @@ export function editTask(event) {
   modalContainer.dataset.projectId = projectId;
   modalContainer.dataset.taskId = taskId;
   modalContainer.textContent = "";
-  createAddTaskModal(modalContainer, clearModal, hideModal, setNewTaskDetails);
+  createAddTaskModal(
+    modalContainer,
+    clearModal,
+    hideModal,
+    setNewTaskDetails,
+    addProject,
+    "task"
+  );
   populateProjectDropdown(projectList);
 
   // Display the modal

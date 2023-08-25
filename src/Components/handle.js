@@ -1,5 +1,4 @@
 import {
-  createProject,
   projectList,
   populateProjectDropdown,
   Project,
@@ -7,7 +6,7 @@ import {
 } from "./createProject";
 import "../style/main.css";
 import { crateProjectDiv, createAddTaskModal } from "./domComponents";
-import { clearModal, hideModal, addTask } from "./modal";
+import { clearModal, hideModal, addTask, addProject } from "./modal";
 import { getProjectsTask, Todo } from "./createTask";
 
 const createProjects = document.querySelector(".addNewProject");
@@ -17,32 +16,35 @@ const showModalBtn = document.getElementById("showModal");
 
 // add task to the array list and display them on the screen
 createProjects.addEventListener("click", () => {
-  createProject();
-  projectHolder.textContent = "";
-  projectList.forEach((p, index) => {
-    let name = p.getName();
-    crateProjectDiv(
-      name,
-      projectHolder,
-      index,
-      getProjectsTask,
-      deleteProjectObject,
-      displayStoredProjects
-    );
-  });
-  localStorage.setItem("projectList", JSON.stringify(projectList));
+  hideModal();
+  modalContainer.textContent = "";
+  createAddTaskModal(
+    modalContainer,
+    clearModal,
+    hideModal,
+    addTask,
+    addProject,
+    "project"
+  );
 });
 
 // add the modal to the DOM and display it
 showModalBtn.addEventListener("click", () => {
   hideModal();
   modalContainer.textContent = "";
-  createAddTaskModal(modalContainer, clearModal, hideModal, addTask);
+  createAddTaskModal(
+    modalContainer,
+    clearModal,
+    hideModal,
+    addTask,
+    addProject,
+    "task"
+  );
   populateProjectDropdown(projectList);
 });
 
 // if projects stored in localStorage display them
-function displayStoredProjects() {
+export function displayStoredProjects() {
   projectHolder.textContent = "";
   projectList.forEach((p, index) => {
     let name = p.getName();
@@ -77,7 +79,6 @@ function populateProjectListFromStorage() {
   const storedData = JSON.parse(localStorage.getItem("projectList")) || [];
   projectList.length = 0; // clear the array without reassigning it
   storedData.map(reviveProject).forEach((project) => projectList.push(project));
-  console.log(projectList);
 }
 
 window.onload = () => {

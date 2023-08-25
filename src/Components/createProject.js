@@ -21,26 +21,13 @@ export class Project {
 export let projectList = [];
 
 // create a new project and add then to the projectList array
-export function createProject() {
-  let projectName = capitalizeFirstLetter(
-    prompt("Enter the name of the project")
-  );
+export function createProject(projectName) {
+  projectName = capitalizeFirstLetter(projectName);
   if (projectName.length > 1) {
     const project = new Project(projectName);
     projectList.push(project);
   } else {
-    let flag = true;
-    while (flag) {
-      alert("Project word count has to be higher than 1");
-      projectName = capitalizeFirstLetter(
-        prompt("Enter the name of the project")
-      );
-      if (projectName.length > 1) {
-        flag = false;
-      }
-    }
-    const project = new Project(projectName);
-    projectList.push(project);
+    alert("Project word count has to be higher than 1");
   }
 }
 
