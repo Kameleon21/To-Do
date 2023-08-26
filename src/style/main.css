@@ -173,7 +173,7 @@
 /* class for done task */
 .done {
   text-decoration: line-through;
-  background-color: ;
+  background-color: lightgrey;
 }
 
 /* media queries for larger screen */

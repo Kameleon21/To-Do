@@ -6,8 +6,8 @@ import {
   createDefaultProject,
 } from "./createProject";
 import "../style/main.css";
-import { crateProjectDiv, createAddTaskModal } from "./domComponents";
-import { clearModal, hideModal, addTask, addProject } from "./modal";
+import { crateProjectDiv, createModal } from "./domComponents";
+import { clearModal, hideModal, addTaskOrProject } from "./modal";
 import { getProjectsTask, Todo } from "./createTask";
 
 const createProjects = document.querySelector(".addNewProject");
@@ -19,12 +19,11 @@ const showModalBtn = document.getElementById("showModal");
 createProjects.addEventListener("click", () => {
   hideModal();
   modalContainer.textContent = "";
-  createAddTaskModal(
+  createModal(
     modalContainer,
     clearModal,
     hideModal,
-    addTask,
-    addProject,
+    addTaskOrProject,
     "project"
   );
 });
@@ -33,12 +32,11 @@ createProjects.addEventListener("click", () => {
 showModalBtn.addEventListener("click", () => {
   hideModal();
   modalContainer.textContent = "";
-  createAddTaskModal(
+  createModal(
     modalContainer,
     clearModal,
     hideModal,
-    addTask,
-    addProject,
+    addTaskOrProject,
     "task"
   );
   populateProjectDropdown(projectList);

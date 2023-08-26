@@ -1,7 +1,11 @@
-import { tr } from "date-fns/locale";
 import { projectList, populateProjectDropdown } from "./createProject";
-import { taskElement, createAddTaskModal } from "./domComponents";
-import { hideModal, clearModal, setNewTaskDetails, addProject } from "./modal";
+import { taskElement, createModal } from "./domComponents";
+import {
+  hideModal,
+  clearModal,
+  setNewTaskDetails,
+  addTaskOrProject,
+} from "./modal";
 
 // blueprint to create task
 export class Todo {
@@ -93,14 +97,7 @@ export function editTask(event) {
   modalContainer.dataset.projectId = projectId;
   modalContainer.dataset.taskId = taskId;
   modalContainer.textContent = "";
-  createAddTaskModal(
-    modalContainer,
-    clearModal,
-    hideModal,
-    setNewTaskDetails,
-    addProject,
-    "task"
-  );
+  createModal(modalContainer, clearModal, hideModal, addTaskOrProject, "edit");
   populateProjectDropdown(projectList);
 
   // Display the modal
@@ -130,13 +127,27 @@ function finishedTask(event) {
     `[data-name="${task.getTitle()}"]`
   );
 
+  // Change the tasks class to done and update done value
   if (task.done === false) {
     taskElement.classList.add("done");
+    // remove the background of priority
+    if (
+      taskElement.classList.contains("high") ||
+      taskElement.classList.contains("medium") ||
+      taskElement.classList.contains("low")
+    ) {
+      taskElement.classList.remove("high", "medium", "low");
+    }
     task.done = true;
   } else {
     taskElement.classList.remove("done");
+    if (task.getPriority() === "High") {
+      taskElement.classList.add("high");
+    } else if (task.getPriority() === "Medium") {
+      taskElement.classList.add("medium");
+    } else {
+      taskElement.classList.add("low");
+    }
     task.done = false;
   }
-
-  console.log(task);
 }

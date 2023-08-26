@@ -1,6 +1,7 @@
 import delIcon from "../assets/delete.png";
 import editIcon from "../assets/pencil.png";
 import tickIcon from "../assets/check.png";
+import { setNewTaskDetails } from "./modal";
 // creates a new element for a new project on the DOM
 export const crateProjectDiv = (
   projectName,
@@ -31,12 +32,11 @@ export const crateProjectDiv = (
 };
 
 // creates a form for the modal to add tasks
-export const createAddTaskModal = (
+export const createModal = (
   modalContainer,
   clearModal,
   hideModal,
-  addTask,
-  addProject,
+  addTaskOrProject,
   formType
 ) => {
   const form = document.createElement("form");
@@ -61,48 +61,52 @@ export const createAddTaskModal = (
   addTaskAndProject.setAttribute("id", "1");
 
   // add eventListeners
-  clearBtn.addEventListener("click", clearModal);
+  clearBtn.addEventListener("click", () => {
+    clearModal(formType);
+  });
   hideModalBtn.addEventListener("click", () => {
-    clearModal();
+    clearModal(formType);
     hideModal();
   });
   addTaskAndProject.addEventListener("click", () => {
-    formType === "task" ? addTask() : addProject();
+    if (formType === "task" || formType === "project") {
+      addTaskOrProject(formType);
+    } else {
+      setNewTaskDetails();
+    }
   });
 
-  form.innerHTML = `
-  ${
-    formType === "task"
-      ? `
-  <label for="title">Title:</label>
-  <input type="text" name="title" id="title" />
-  <label for="description">Description:</label>
-  <textarea
-  name="description"
-  id="description"
-  cols="10"
-  rows="5"
-  ></textarea>
-  <label for="dueDate">Due Date:</label>
-  <input type="date" name="dueDate" id="dueDate" />
-  <label for="priority">Priority:</label>
-  <select name="priority" id="priority">
-  <option value = "" disabled hidden> Select priority</option>
-  <option value="High">High</option>
-  <option value="Medium">Medium</option>
-  <option value="Low">Low</option>
-  </select>
-  <label for="projectName">Choose Project:</label>
-  <select id="projectDropdown">
-  </select> `
-      : `
-  <label for="projectName">Project Name:</label>
-    <input type="text" name="projectName" id="projectName" />
-  `
+  if (formType === "task" || formType === "edit") {
+    form.innerHTML = `
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title" />
+      <label for="description">Description:</label>
+      <textarea name="description" id="description" cols="10" rows="5"></textarea>
+      <label for="dueDate">Due Date:</label>
+      <input type="date" name="dueDate" id="dueDate" />
+      <label for="priority">Priority:</label>
+      <select name="priority" id="priority">
+        <option value = "" disabled hidden> Select priority</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <label for="projectName">Choose Project:</label>
+      <select id="projectDropdown">
+      </select>
+    `;
+  } else {
+    form.innerHTML = `
+      <label for="projectName">Project Name:</label>
+      <input type="text" name="projectName" id="projectName" />
+    `;
   }
-  <div class= "buttonHolder"> 
-  </div>
+
+  form.innerHTML += `
+    <div class="buttonHolder"> 
+    </div>
   `;
+
   form.classList.add("taskForm");
 
   form.querySelector(".buttonHolder").appendChild(addTaskAndProject);
