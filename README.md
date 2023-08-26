@@ -38,10 +38,10 @@ npm run deploy
 
 ## Technologies Used
 
--Webpack
--JavaScript
--HTML
--CSS
+- Webpack
+- JavaScript
+- HTML
+- CSS
 
 ## Learning Journey 
 
