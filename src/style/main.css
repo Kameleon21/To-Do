@@ -70,8 +70,8 @@
   justify-content: space-between;
   align-items: center;
   height: 20px;
-  padding: 5px;
-  border: 2px solid;
+  padding: 4px;
+  border: 1px solid;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
@@ -131,7 +131,7 @@
 }
 
 .task {
-  width: 250px;
+  width: 60vw;
   height: 2rem;
   display: flex;
   justify-content: space-around;
@@ -189,9 +189,9 @@
   }
 
   .task {
-    width: 60vw;
     font-size: 1.3rem;
-    transition: linear 1ms;
+    transition: 1ms;
+    cursor: pointer !important;
   }
 
   .task:hover {
@@ -200,7 +200,6 @@
 
   .taskForm {
     width: 250px;
-    height: 300px;
   }
 
   .taskContainer {
@@ -208,7 +207,7 @@
   }
 
   .sideBar {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .btnHolderForTask {
     gap: 10px;
@@ -216,6 +215,8 @@
 
   #showModal {
     transition: linear 1ms;
+    font-size: 14px;
+    cursor: pointer;
   }
 
   #showModal:hover {
@@ -224,5 +225,23 @@
 
   .modalBtn {
     padding: 5px;
+  }
+
+  .projectDiv {
+    padding: 10px;
+    transition: linear 10ms;
+  }
+
+  .projectDiv:hover {
+    background-color: var(--fourth-clr);
+  }
+
+  .bottom-sideBar h2 {
+    text-align: center;
+  }
+
+  .addNewProject {
+    padding: 0.5rem;
+    cursor: pointer;
   }
 }

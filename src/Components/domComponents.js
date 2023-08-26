@@ -14,7 +14,7 @@ export const crateProjectDiv = (
   const projectDiv = document.createElement("div");
   const delBtn = document.createElement("button");
   projectDiv.textContent = projectName;
-  delBtn.textContent = "X";
+  delBtn.innerHTML = `<img src="${delIcon}" alt="delete icon" class="icon del">`;
   projectDiv.classList.add("projectDiv");
   projectDiv.dataset.id = index;
   projectDiv.setAttribute("id", "project");
@@ -137,9 +137,9 @@ export const taskElement = (
 
   titleHolder.textContent = titleName;
   dateHolder.textContent = dueDate;
-  delBtn.innerHTML = `<img src="${delIcon}" alt="delete icon" class="icon">`;
-  editBtn.innerHTML = `<img src="${editIcon}" alt="edit icon" class="icon">`;
-  finishBtn.innerHTML = `<img src="${tickIcon}" alt="tick icon" class="icon">`;
+  delBtn.innerHTML = `<img src="${delIcon}" alt="delete icon" class="icon del">`;
+  editBtn.innerHTML = `<img src="${editIcon}" alt="edit icon" class="icon edit">`;
+  finishBtn.innerHTML = `<img src="${tickIcon}" alt="tick icon" class="icon finish">`;
 
   holder.classList.add("task");
 
