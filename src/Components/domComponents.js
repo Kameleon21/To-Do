@@ -1,5 +1,6 @@
 import delIcon from "../assets/delete.png";
 import editIcon from "../assets/pencil.png";
+import tickIcon from "../assets/check.png";
 // creates a new element for a new project on the DOM
 export const crateProjectDiv = (
   projectName,
@@ -119,7 +120,8 @@ export const taskElement = (
   projectIndex,
   taskIndex,
   editTask,
-  deleteTask
+  deleteTask,
+  doneTask
 ) => {
   const holder = document.createElement("div");
   const titleHolder = document.createElement("p");
@@ -127,11 +129,13 @@ export const taskElement = (
   const btnHolder = document.createElement("div");
   const delBtn = document.createElement("button");
   const editBtn = document.createElement("button");
+  const finishBtn = document.createElement("button");
 
   titleHolder.textContent = titleName;
   dateHolder.textContent = dueDate;
   delBtn.innerHTML = `<img src="${delIcon}" alt="delete icon" class="icon">`;
   editBtn.innerHTML = `<img src="${editIcon}" alt="edit icon" class="icon">`;
+  finishBtn.innerHTML = `<img src="${tickIcon}" alt="tick icon" class="icon">`;
 
   holder.classList.add("task");
 
@@ -144,21 +148,26 @@ export const taskElement = (
     holder.classList.add("low");
   }
   editBtn.addEventListener("click", editTask);
-  holder.dataset.projectId = projectIndex;
-  holder.dataset.id = taskIndex;
+  delBtn.addEventListener("click", deleteTask);
+  finishBtn.addEventListener("click", doneTask);
+
+  finishBtn.dataset.projectId = projectIndex;
+  finishBtn.dataset.id = taskIndex;
   delBtn.dataset.projectId = projectIndex;
   delBtn.dataset.id = taskIndex;
   editBtn.dataset.projectId = projectIndex;
   editBtn.dataset.id = taskIndex;
+  holder.dataset.projectId = projectIndex;
+  holder.dataset.id = taskIndex;
+  holder.dataset.name = titleName;
 
+  btnHolder.appendChild(finishBtn);
   btnHolder.appendChild(editBtn);
   btnHolder.appendChild(delBtn);
   btnHolder.classList.add("btnHolderForTask");
-  delBtn.addEventListener("click", deleteTask);
 
   holder.appendChild(titleHolder);
   holder.appendChild(dateHolder);
   holder.appendChild(btnHolder);
   modalContainer.appendChild(holder);
 };
-

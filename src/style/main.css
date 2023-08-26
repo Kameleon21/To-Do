@@ -170,6 +170,12 @@
   gap: 5px;
 }
 
+/* class for done task */
+.done {
+  text-decoration: line-through;
+  background-color: ;
+}
+
 /* media queries for larger screen */
 @media screen and (min-width: 700px) {
   .contain {

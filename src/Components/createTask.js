@@ -1,3 +1,4 @@
+import { tr } from "date-fns/locale";
 import { projectList, populateProjectDropdown } from "./createProject";
 import { taskElement, createAddTaskModal } from "./domComponents";
 import { hideModal, clearModal, setNewTaskDetails, addProject } from "./modal";
@@ -9,6 +10,7 @@ export class Todo {
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
+    this.done = false;
   }
 
   //   Getters
@@ -47,7 +49,7 @@ export function createTask(title, description, dueDate, priority, arrayList) {
 }
 
 // delete tasks from array
-export const deleteTask = (event) => {
+const deleteTask = (event) => {
   const projectId = parseInt(event.currentTarget.dataset.projectId);
   const taskId = parseInt(event.currentTarget.dataset.id);
   projectList[projectId].task.splice(taskId, 1);
@@ -71,7 +73,8 @@ export const getProjectsTask = (projectIndex) => {
       projectIndex,
       taskIndex,
       editTask,
-      deleteTask
+      deleteTask,
+      finishedTask
     );
   });
 };
@@ -116,4 +119,24 @@ export function editTask(event) {
   title.textContent = "Edit Task";
 }
 
+// toggle the done class when user clicks on the tick
+function finishedTask(event) {
+  // target that the specif project and task
+  const projectId = parseInt(event.currentTarget.dataset.projectId);
+  const taskId = parseInt(event.currentTarget.dataset.id);
+  // reference that specif task
+  const task = projectList[projectId].task[taskId];
+  const taskElement = document.querySelector(
+    `[data-name="${task.getTitle()}"]`
+  );
 
+  if (task.done === false) {
+    taskElement.classList.add("done");
+    task.done = true;
+  } else {
+    taskElement.classList.remove("done");
+    task.done = false;
+  }
+
+  console.log(task);
+}
