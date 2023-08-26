@@ -5,10 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/main.css" />
     <title>To-Do</title>
-  <script defer src="maind29d5389b5153759d14c.js"></script><link href="main.css" rel="stylesheet"></head>
+  <script defer src="maince98a9f731fd51c45154.js"></script><link href="main.css" rel="stylesheet"></head>
   <body>
     <div class="contain">
-      <h1>Hello World</h1>
+      <div class="sideBar">
+        <div class="bottom-sideBar">
+          <h2>Projects</h2>
+          <button type="button" class="btn addNewProject">Add Projects</button>
+          <div class="newProjectContainer"></div>
+        </div>
+      </div>
+      <div class="mainContent">
+        <!-- modal for adding new tasks -->
+        <div class="modalContainer hideModalClass"></div>
+        <!-- button to display the add task modal -->
+        <button id="showModal">Add Task</button>
+        <div class="taskContainer"></div>
+      </div>
     </div>
   </body>
 </html>

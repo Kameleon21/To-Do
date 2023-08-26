@@ -1,10 +1,252 @@
 /*!**********************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/main.css ***!
   \**********************************************************************/
-h1 {
-  color: red;
-  background-color: orange;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --main-clr: #0b132b;
+  --second-clr: #1c2541;
+  --third-clr: #3a506b;
+  --fourth-clr: #5bc0be;
+  --fifth-clr: #6fffe9;
+  --modalBtn-clr: #0000ff;
+}
+
+.contain {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+/* all sidebar styling */
+.sideBar {
+  background-color: var(--main-clr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.bottom-sideBar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.bottom-sideBar h2 {
+  color: var(--fifth-clr);
+}
+
+.mainContent {
+  background-color: var(--second-clr);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* btn styling  */
+.btn {
+  padding: 2px 5px;
+  background-color: var(--third-clr);
+  border-color: var(--third-clr);
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* Projects list styling */
+.newProjectContainer {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* new project divs */
+.projectDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+  padding: 4px;
+  border: 1px solid;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* task form container */
+.modalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#showModal {
+  background-color: #5dbea3;
+  border-color: #5dbea3;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+/* task form  */
+.taskForm {
+  background-color: var(--third-clr);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 10px;
+}
+
+.buttonHolder {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 10px;
+}
+
+.modalBtn {
+  font-size: 12px;
+  background: var(--fourth-clr);
+  border-color: var(--fourth-clr);
+  border-radius: 5px;
+  padding: 2px;
+}
+
+/* hide modal class */
+.hideModalClass {
+  visibility: hidden;
+}
+
+/* task styles */
+.taskContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task {
+  width: 60vw;
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 3px solid;
+}
+
+.task:hover {
+  cursor: crosshair;
+}
+
+/* styles for to-do priority levels */
+.high {
+  border-color: red;
+}
+
+.medium {
+  border-color: orange;
+}
+
+.low {
+  border-color: blue;
+}
+
+/* class for icons */
+.icon {
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+}
+
+.btnHolderForTask {
+  display: flex;
+  gap: 5px;
+}
+
+/* class for done task */
+.done {
+  text-decoration: line-through;
+  background-color: lightgrey;
+}
+
+/* media queries for larger screen */
+@media screen and (min-width: 700px) {
+  .contain {
+    grid-template-columns: 1fr 4fr;
+  }
+
+  .taskContainer {
+    width: 700px;
+    height: 900px;
+    align-items: center;
+  }
+
+  .task {
+    font-size: 1.3rem;
+    transition: 1ms;
+    cursor: pointer !important;
+  }
+
+  .task:hover {
+    width: 62vw;
+  }
+
+  .taskForm {
+    width: 250px;
+  }
+
+  .taskContainer {
+    gap: 1rem;
+  }
+
+  .sideBar {
+    font-size: 1.5rem;
+  }
+  .btnHolderForTask {
+    gap: 10px;
+  }
+
+  #showModal {
+    transition: linear 1ms;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  #showModal:hover {
+    transform: scale(1.2);
+  }
+
+  .modalBtn {
+    padding: 5px;
+  }
+
+  .projectDiv {
+    padding: 10px;
+    transition: linear 10ms;
+  }
+
+  .projectDiv:hover {
+    background-color: var(--fourth-clr);
+  }
+
+  .bottom-sideBar h2 {
+    text-align: center;
+  }
+
+  .addNewProject {
+    padding: 0.5rem;
+    cursor: pointer;
+  }
 }
 
 
