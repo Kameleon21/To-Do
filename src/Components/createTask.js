@@ -115,3 +115,5 @@ export function editTask(event) {
   const title = document.getElementById("1");
   title.textContent = "Edit Task";
 }
+
+

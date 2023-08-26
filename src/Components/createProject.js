@@ -23,11 +23,16 @@ export let projectList = [];
 // create a new project and add then to the projectList array
 export function createProject(projectName) {
   projectName = capitalizeFirstLetter(projectName);
-  if (projectName.length > 1) {
-    const project = new Project(projectName);
-    projectList.push(project);
+  const project = projectList.find((p) => p.name === projectName);
+  if (project) {
+    alert("This project is already stored");
   } else {
-    alert("Project word count has to be higher than 1");
+    if (projectName.length > 1) {
+      const project = new Project(projectName);
+      projectList.push(project);
+    } else {
+      alert("Project word count has to be higher than 1");
+    }
   }
 }
 
@@ -87,3 +92,10 @@ export const deleteProjectObject = (index) => {
   const taskContainer = document.querySelector(".taskContainer");
   taskContainer.textContent = "";
 };
+
+// create a default value for task to go to
+export function createDefaultProject() {
+  let inbox = "Inbox";
+  createProject(inbox);
+}
+

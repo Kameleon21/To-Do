@@ -3,6 +3,7 @@ import {
   populateProjectDropdown,
   Project,
   deleteProjectObject,
+  createDefaultProject,
 } from "./createProject";
 import "../style/main.css";
 import { crateProjectDiv, createAddTaskModal } from "./domComponents";
@@ -79,6 +80,10 @@ function populateProjectListFromStorage() {
   const storedData = JSON.parse(localStorage.getItem("projectList")) || [];
   projectList.length = 0; // clear the array without reassigning it
   storedData.map(reviveProject).forEach((project) => projectList.push(project));
+  let ifInbox = projectList.find((p) => p.name === "Inbox");
+  if (!ifInbox) {
+    createDefaultProject();
+  }
 }
 
 window.onload = () => {
